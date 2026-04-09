@@ -109,7 +109,3 @@ input, textarea {
   cursor: pointer;
   float: right;
 }
-
-.modal {
-  display: flex !important;
-}
