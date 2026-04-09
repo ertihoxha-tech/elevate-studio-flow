@@ -113,15 +113,20 @@
   </form>
 </section>
 
-<!-- Modal -->
-<div id="modal" class="modal">
+function openModal(plan) {
+  const modal = document.getElementById("modal");
+  const title = document.getElementById("planTitle");
+
+  title.innerText = "Selected Plan: " + plan;
+
+  modal.style.display = "flex";
+}
+
+  <div id="modal" class="modal">
   <div class="modal-box">
-    <span class="close" onclick="closeModal()">×</span>
+    <span onclick="closeModal()">×</span>
 
     <h2 id="planTitle">Selected Plan</h2>
-    <p class="modal-subtext">
-      Start your 14-day free trial. Cancel anytime.
-    </p>
 
     <input type="text" placeholder="Name">
     <input type="email" placeholder="Email">
