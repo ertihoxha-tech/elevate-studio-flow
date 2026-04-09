@@ -5,7 +5,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Elevate Studio Flow</title>
   <link rel="stylesheet" href="style.css">
-</head>
+</head> <script>
+  function toggleTheme() {
+    document.body.classList.toggle("light-mode");
+    localStorage.setItem("theme", document.body.classList.contains("light-mode") ? "light" : "dark");
+  }
+
+  window.onload = () => {
+    const saved = localStorage.getItem("theme");
+    if (saved === "light") {
+      document.body.classList.add("light-mode");
+    }
+  };
+</script>
 <body>
 
   <!-- Navbar -->
