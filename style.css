@@ -69,3 +69,15 @@ input, textarea {
   height: 40px;
   object-fit: contain;
 }
+.light-mode {
+  background: white;
+  color: black;
+}
+
+.light-mode .navbar {
+  background: #f1f5f9;
+}
+
+.light-mode .card {
+  background: #e2e8f0;
+}
