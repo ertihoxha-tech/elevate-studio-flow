@@ -113,32 +113,32 @@
   </form>
 </section>
 
-  <script>
-    function scrollToContact() {
-      document.getElementById("contact").scrollIntoView({ behavior: "smooth" });
-    }
-  </script>
-<div id="modal" class="modal">
-  <div class="modal-content">
-    <span class="close" onclick="closeModal()">&times;</span>
-    <h2 id="planTitle"></h2>
-    <p>Start your 14-day free trial. Cancel anytime.</p>
-
-    <input type="text" placeholder="Name">
-    <input type="email" placeholder="Email">
-    <button>Start Free Trial</button>
-  </div>
-</div>
-
 <script>
+  function scrollToContact() {
+    document.getElementById("contact").scrollIntoView({ behavior: "smooth" });
+  }
+
   function openModal(plan) {
-    document.getElementById("modal").style.display = "flex";
-    document.getElementById("planTitle").innerText = "Selected Plan: " + plan;
+    const modal = document.getElementById("modal");
+    const title = document.getElementById("planTitle");
+
+    if (modal && title) {
+      modal.style.display = "flex";
+      title.innerText = "Selected Plan: " + plan;
+    }
   }
 
   function closeModal() {
-    document.getElementById("modal").style.display = "none";
+    const modal = document.getElementById("modal");
+    if (modal) {
+      modal.style.display = "none";
+    }
+  }
+
+  function toggleTheme() {
+    document.body.classList.toggle("light-mode");
   }
 </script>
+  
 </body>
 </html>
