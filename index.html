@@ -34,8 +34,6 @@
   </header>
 <button onclick="toggleTheme()">🌙</button>
 
-  <button onclick="alert('working')">Test Button</button>
-  
   <!-- Hero -->
   <section class="hero">
   <h1>We design modern websites that help your business grow</h1>
@@ -130,29 +128,14 @@
 </div>
   
 <script>
-  function scrollToContact() {
-    document.getElementById("contact").scrollIntoView({ behavior: "smooth" });
-  }
-
   function openModal(plan) {
+    alert("Clicked: " + plan); // DEBUG
+
     const modal = document.getElementById("modal");
     const title = document.getElementById("planTitle");
 
-    if (modal && title) {
-      modal.style.display = "flex";
-      title.innerText = "Selected Plan: " + plan;
-    }
-  }
-
-  function closeModal() {
-    const modal = document.getElementById("modal");
-    if (modal) {
-      modal.style.display = "none";
-    }
-  }
-
-  function toggleTheme() {
-    document.body.classList.toggle("light-mode");
+    modal.style.display = "flex";
+    title.innerText = "Selected Plan: " + plan;
   }
 </script>
   
