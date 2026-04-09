@@ -38,9 +38,14 @@ section {
 
 .card {
   background: #1e293b;
-  padding: 20px;
-  border-radius: 10px;
-  width: 200px;
+  padding: 25px;
+  border-radius: 12px;
+  width: 220px;
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
 }
 
 button {
