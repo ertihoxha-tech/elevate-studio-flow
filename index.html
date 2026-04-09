@@ -113,6 +113,20 @@
   </form>
 </section>
 
+  <!-- Modal -->
+<div id="modal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal()">×</span>
+    <h2 id="planTitle">Selected Plan</h2>
+    <p>Start your 14-day free trial. Cancel anytime.</p>
+
+    <input type="text" placeholder="Name">
+    <input type="email" placeholder="Email">
+
+    <button>Start Free Trial</button>
+  </div>
+</div>
+  
 <script>
   function scrollToContact() {
     document.getElementById("contact").scrollIntoView({ behavior: "smooth" });
