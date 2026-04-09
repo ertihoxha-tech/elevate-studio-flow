@@ -167,3 +167,8 @@ input, textarea {
   border-radius: 6px;
   cursor: pointer;
 }
+
+.modal {
+  display: flex !important;
+  background: red !important;
+}
