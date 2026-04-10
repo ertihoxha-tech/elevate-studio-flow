@@ -219,31 +219,43 @@
         </div>
       </div>
 
-      <div class="payment-methods">
-        <p class="payment-label" data-i18n="paymentLabel">Choose a payment method</p>
-
-        <label class="payment-option">
-          <input type="radio" name="paymentMethod" checked>
-          <span class="payment-pill"><span class="payment-icon">◉</span> <span data-i18n="paymentCard">Credit or debit card</span></span>
-        </label>
-
-        <label class="payment-option">
-          <input type="radio" name="paymentMethod">
-          <span class="payment-pill"><span class="payment-icon"></span> <span data-i18n="paymentApple">Apple Pay</span></span>
-        </label>
-
-        <label class="payment-option">
-          <input type="radio" name="paymentMethod">
-          <span class="payment-pill"><span class="payment-icon">G</span> <span data-i18n="paymentGoogle">Google Pay</span></span>
-        </label>
-
-        <label class="payment-option">
-          <input type="radio" name="paymentMethod">
-          <span class="payment-pill"><span class="payment-icon">P</span> <span data-i18n="paymentPaypal">PayPal</span></span>
-        </label>
+      <div class="method-tabs" role="tablist" aria-label="Payment method">
+        <button type="button" class="method-tab active" data-method="card" onclick="setPaymentMethod('card')">Credit / Debit Card</button>
+        <button type="button" class="method-tab" data-method="paypal" onclick="setPaymentMethod('paypal')">PayPal</button>
+        <button type="button" class="method-tab" data-method="apple" onclick="setPaymentMethod('apple')">Apple Pay</button>
+        <button type="button" class="method-tab" data-method="google" onclick="setPaymentMethod('google')">Google Pay</button>
       </div>
 
-      <input type="text" id="modalName" placeholder="Name on account" autocomplete="name">
+      <div class="method-panel active" data-method="card">
+        <div class="field-grid">
+          <input type="text" id="cardNumber" placeholder="Card number" inputmode="numeric" autocomplete="cc-number">
+          <input type="text" id="cardExpiry" placeholder="MM/YY" inputmode="numeric" autocomplete="cc-exp">
+          <input type="text" id="cardCvc" placeholder="Security code" inputmode="numeric" autocomplete="cc-csc">
+          <input type="text" id="cardHolder" placeholder="Cardholder name" autocomplete="cc-name">
+          <input type="text" id="cardCountry" placeholder="Country / region" autocomplete="country-name">
+        </div>
+      </div>
+
+      <div class="method-panel" data-method="paypal">
+        <input type="email" id="paypalEmail" placeholder="PayPal email address" autocomplete="email">
+        <p class="helper-text">Use the email address linked to a PayPal account.</p>
+      </div>
+
+      <div class="method-panel" data-method="apple">
+        <div class="field-grid">
+          <input type="text" id="appleName" placeholder="Full name" autocomplete="name">
+          <input type="email" id="appleAccount" placeholder="Apple ID email or phone" autocomplete="email">
+          <input type="text" id="appleCountry" placeholder="Country / region" autocomplete="country-name">
+        </div>
+      </div>
+
+      <div class="method-panel" data-method="google">
+        <div class="field-grid">
+          <input type="text" id="googleName" placeholder="Full name" autocomplete="name">
+          <input type="email" id="googleAccount" placeholder="Google account email or phone" autocomplete="email">
+          <input type="text" id="googleCountry" placeholder="Country / region" autocomplete="country-name">
+        </div>
+      </div>
 
       <button type="button" class="modal-btn" id="continueButton" data-i18n="continueButton" onclick="continuePurchase()">Continue subscription</button>
       <p id="modalStatus" class="modal-status" aria-live="polite"></p>
@@ -256,6 +268,7 @@
     let currentLang = "en";
     let billingMode = "monthly";
     let selectedPlan = "Standard";
+    let selectedMethod = "card";
 
     const translations = {
       en: {
@@ -276,19 +289,22 @@
         faqTitle: "FAQ",
         reviewsTitle: "What clients say",
         contactTitle: "Contact Us",
+        emailLabel: "Email:",
+        instagramLabel: "Instagram:",
+        sendButton: "Send",
+        mostPopular: "Most popular",
+        bestValue: "Best value",
         selectedPlanPrefix: "Selected Plan: ",
         modalSubtextMonthly: "Choose your payment method and continue with monthly billing.",
         modalSubtextYearly: "Choose your payment method and continue. Yearly billing saves 30%.",
-        paymentLabel: "Choose a payment method",
         continueButton: "Continue subscription",
-        mostPopular: "Most popular",
-        bestValue: "Best value",
-        paymentCard: "Credit or debit card",
-        paymentApple: "Apple Pay",
-        paymentGoogle: "Google Pay",
-        paymentPaypal: "PayPal",
-        missingName: "Please enter the name on the account.",
-        missingPayment: "Please choose a payment method.",
+        missingCardNumber: "Please enter a valid card number.",
+        missingExpiry: "Please enter a valid expiry date (MM/YY).",
+        missingCvc: "Please enter a valid security code.",
+        missingCardHolder: "Please enter the cardholder name.",
+        missingCountry: "Please enter the country / region.",
+        missingPaypalEmail: "Please enter a valid PayPal email address.",
+        missingWallet: "Please complete all account details.",
         readyMonthly: "Ready to continue with {plan} on monthly billing.",
         readyYearly: "Ready to continue with {plan} on yearly billing. Annual billing saves 30%."
       },
@@ -310,19 +326,22 @@
         faqTitle: "FAQ",
         reviewsTitle: "Was Kunden sagen",
         contactTitle: "Kontakt",
+        emailLabel: "E-Mail:",
+        instagramLabel: "Instagram:",
+        sendButton: "Senden",
+        mostPopular: "Am beliebtesten",
+        bestValue: "Bestes Angebot",
         selectedPlanPrefix: "Ausgewählter Plan: ",
         modalSubtextMonthly: "Wähle deine Zahlungsmethode und fahre mit der monatlichen Abrechnung fort.",
         modalSubtextYearly: "Wähle deine Zahlungsmethode und fahre fort. Jährliche Abrechnung spart 30 %.",
-        paymentLabel: "Zahlungsmethode wählen",
         continueButton: "Abo fortsetzen",
-        mostPopular: "Am beliebtesten",
-        bestValue: "Bestes Angebot",
-        paymentCard: "Kredit- oder Debitkarte",
-        paymentApple: "Apple Pay",
-        paymentGoogle: "Google Pay",
-        paymentPaypal: "PayPal",
-        missingName: "Bitte gib den Namen des Kontos ein.",
-        missingPayment: "Bitte wähle eine Zahlungsmethode.",
+        missingCardNumber: "Bitte gib eine gültige Kartennummer ein.",
+        missingExpiry: "Bitte gib ein gültiges Ablaufdatum ein (MM/JJ).",
+        missingCvc: "Bitte gib einen gültigen Sicherheitscode ein.",
+        missingCardHolder: "Bitte gib den Namen des Karteninhabers ein.",
+        missingCountry: "Bitte gib Land / Region ein.",
+        missingPaypalEmail: "Bitte gib eine gültige PayPal-E-Mail ein.",
+        missingWallet: "Bitte vervollständige alle Kontodaten.",
         readyMonthly: "Bereit, mit {plan} und monatlicher Abrechnung fortzufahren.",
         readyYearly: "Bereit, mit {plan} und jährlicher Abrechnung fortzufahren. Jährliche Abrechnung spart 30 %."
       },
@@ -344,19 +363,22 @@
         faqTitle: "FAQ",
         reviewsTitle: "Ce que disent les clients",
         contactTitle: "Contact",
+        emailLabel: "E-mail :",
+        instagramLabel: "Instagram :",
+        sendButton: "Envoyer",
+        mostPopular: "Le plus populaire",
+        bestValue: "Meilleure offre",
         selectedPlanPrefix: "Plan sélectionné : ",
         modalSubtextMonthly: "Choisissez votre mode de paiement et continuez avec la facturation mensuelle.",
         modalSubtextYearly: "Choisissez votre mode de paiement et continuez. La facturation annuelle économise 30 %.",
-        paymentLabel: "Choisir un moyen de paiement",
         continueButton: "Continuer l’abonnement",
-        mostPopular: "Le plus populaire",
-        bestValue: "Meilleure offre",
-        paymentCard: "Carte de crédit ou de débit",
-        paymentApple: "Apple Pay",
-        paymentGoogle: "Google Pay",
-        paymentPaypal: "PayPal",
-        missingName: "Veuillez saisir le nom du compte.",
-        missingPayment: "Veuillez choisir un moyen de paiement.",
+        missingCardNumber: "Veuillez saisir un numéro de carte valide.",
+        missingExpiry: "Veuillez saisir une date d’expiration valide (MM/AA).",
+        missingCvc: "Veuillez saisir un code de sécurité valide.",
+        missingCardHolder: "Veuillez saisir le nom du titulaire.",
+        missingCountry: "Veuillez saisir le pays / la région.",
+        missingPaypalEmail: "Veuillez saisir une adresse PayPal valide.",
+        missingWallet: "Veuillez compléter tous les détails du compte.",
         readyMonthly: "Prêt à continuer avec {plan} en facturation mensuelle.",
         readyYearly: "Prêt à continuer avec {plan} en facturation annuelle. La facturation annuelle économise 30 %."
       },
@@ -378,19 +400,22 @@
         faqTitle: "FAQ",
         reviewsTitle: "Lo que dicen los clientes",
         contactTitle: "Contacto",
+        emailLabel: "Correo:",
+        instagramLabel: "Instagram:",
+        sendButton: "Enviar",
+        mostPopular: "Más popular",
+        bestValue: "Mejor valor",
         selectedPlanPrefix: "Plan seleccionado: ",
         modalSubtextMonthly: "Elige tu método de pago y continúa con la facturación mensual.",
         modalSubtextYearly: "Elige tu método de pago y continúa. La facturación anual ahorra 30 %.",
-        paymentLabel: "Elige un método de pago",
         continueButton: "Continuar suscripción",
-        mostPopular: "Más popular",
-        bestValue: "Mejor valor",
-        paymentCard: "Tarjeta de crédito o débito",
-        paymentApple: "Apple Pay",
-        paymentGoogle: "Google Pay",
-        paymentPaypal: "PayPal",
-        missingName: "Escribe el nombre de la cuenta.",
-        missingPayment: "Elige un método de pago.",
+        missingCardNumber: "Escribe un número de tarjeta válido.",
+        missingExpiry: "Escribe una fecha de vencimiento válida (MM/AA).",
+        missingCvc: "Escribe un código de seguridad válido.",
+        missingCardHolder: "Escribe el nombre del titular.",
+        missingCountry: "Escribe el país / región.",
+        missingPaypalEmail: "Escribe un correo de PayPal válido.",
+        missingWallet: "Completa todos los datos de la cuenta.",
         readyMonthly: "Listo para continuar con {plan} en facturación mensual.",
         readyYearly: "Listo para continuar con {plan} en facturación anual. La facturación anual ahorra 30 %."
       },
@@ -412,21 +437,24 @@
         faqTitle: "FAQ",
         reviewsTitle: "Cosa dicono i clienti",
         contactTitle: "Contatto",
+        emailLabel: "Email:",
+        instagramLabel: "Instagram:",
+        sendButton: "Invia",
+        mostPopular: "Più popolare",
+        bestValue: "Miglior valore",
         selectedPlanPrefix: "Piano selezionato: ",
         modalSubtextMonthly: "Scegli il metodo di pagamento e continua con la fatturazione mensile.",
         modalSubtextYearly: "Scegli il metodo di pagamento e continua. La fatturazione annuale fa risparmiare il 30 %.",
-        paymentLabel: "Scegli un metodo di pagamento",
         continueButton: "Continua l’abbonamento",
-        mostPopular: "Più popolare",
-        bestValue: "Miglior valore",
-        paymentCard: "Carta di credito o debito",
-        paymentApple: "Apple Pay",
-        paymentGoogle: "Google Pay",
-        paymentPaypal: "PayPal",
-        missingName: "Inserisci il nome dell’account.",
-        missingPayment: "Scegli un metodo di pagamento.",
-        readyMonthly: "Pronto per continuare con {plan} in fatturazione mensile.",
-        readyYearly: "Pronto per continuare con {plan} in fatturazione annuale. La fatturazione annuale fa risparmiare il 30 %."
+        missingCardNumber: "Inserisci un numero di carta valido.",
+        missingExpiry: "Inserisci una data di scadenza valida (MM/AA).",
+        missingCvc: "Inserisci un codice di sicurezza valido.",
+        missingCardHolder: "Inserisci il nome del titolare.",
+        missingCountry: "Inserisci paese / regione.",
+        missingPaypalEmail: "Inserisci un’email PayPal valida.",
+        missingWallet: "Completa tutti i dati dell’account.",
+        readyMonthly: "Pronto a continuare con {plan} in fatturazione mensile.",
+        readyYearly: "Pronto a continuare con {plan} in fatturazione annuale. La fatturazione annuale fa risparmiare il 30 %."
       },
       pt: {
         navServices: "Serviços",
@@ -446,55 +474,24 @@
         faqTitle: "FAQ",
         reviewsTitle: "O que os clientes dizem",
         contactTitle: "Contacto",
+        emailLabel: "Email:",
+        instagramLabel: "Instagram:",
+        sendButton: "Enviar",
+        mostPopular: "Mais popular",
+        bestValue: "Melhor valor",
         selectedPlanPrefix: "Plano selecionado: ",
         modalSubtextMonthly: "Escolhe o método de pagamento e continua com cobrança mensal.",
         modalSubtextYearly: "Escolhe o método de pagamento e continua. A cobrança anual poupa 30 %.",
-        paymentLabel: "Escolhe um método de pagamento",
         continueButton: "Continuar subscrição",
-        mostPopular: "Mais popular",
-        bestValue: "Melhor valor",
-        paymentCard: "Cartão de crédito ou débito",
-        paymentApple: "Apple Pay",
-        paymentGoogle: "Google Pay",
-        paymentPaypal: "PayPal",
-        missingName: "Introduz o nome da conta.",
-        missingPayment: "Escolhe um método de pagamento.",
+        missingCardNumber: "Introduz um número de cartão válido.",
+        missingExpiry: "Introduz uma data de validade válida (MM/AA).",
+        missingCvc: "Introduz um código de segurança válido.",
+        missingCardHolder: "Introduz o nome do titular.",
+        missingCountry: "Introduz o país / região.",
+        missingPaypalEmail: "Introduz um email do PayPal válido.",
+        missingWallet: "Completa todos os dados da conta.",
         readyMonthly: "Pronto para continuar com {plan} na cobrança mensal.",
         readyYearly: "Pronto para continuar com {plan} na cobrança anual. A cobrança anual poupa 30 %."
-      },
-      nl: {
-        navServices: "Diensten",
-        navPricing: "Prijzen",
-        navFAQ: "FAQ",
-        navReviews: "Beoordelingen",
-        navContact: "Contact",
-        heroEyebrow: "Digitale studio",
-        heroTitle: "Wij ontwerpen moderne websites die je bedrijf laten groeien",
-        heroText: "Elevate Studio Flow biedt webdesign, ontwikkeling en branding voor moderne bedrijven.",
-        heroCTA: "Gratis proef starten",
-        servicesTitle: "Diensten",
-        pricingTitle: "Prijzen",
-        pricingNote: "Betaal jaarlijks en bespaar 30 % ten opzichte van maandelijkse facturatie.",
-        billingMonthly: "Maandelijks",
-        billingYearly: "Jaarlijks -30 %",
-        faqTitle: "FAQ",
-        reviewsTitle: "Wat klanten zeggen",
-        contactTitle: "Contact",
-        selectedPlanPrefix: "Gekozen plan: ",
-        modalSubtextMonthly: "Kies je betaalmethode en ga verder met maandelijkse facturatie.",
-        modalSubtextYearly: "Kies je betaalmethode en ga verder. Jaarlijkse facturatie bespaart 30 %.",
-        paymentLabel: "Kies een betaalmethode",
-        continueButton: "Abonnement voortzetten",
-        mostPopular: "Meest populair",
-        bestValue: "Beste waarde",
-        paymentCard: "Creditcard of betaalpas",
-        paymentApple: "Apple Pay",
-        paymentGoogle: "Google Pay",
-        paymentPaypal: "PayPal",
-        missingName: "Voer de naam van het account in.",
-        missingPayment: "Kies een betaalmethode.",
-        readyMonthly: "Klaar om door te gaan met {plan} op maandelijkse facturatie.",
-        readyYearly: "Klaar om door te gaan met {plan} op jaarlijkse facturatie. Jaarlijkse facturatie bespaart 30 %."
       },
       tr: {
         navServices: "Hizmetler",
@@ -514,28 +511,25 @@
         faqTitle: "SSS",
         reviewsTitle: "Müşteriler ne diyor",
         contactTitle: "İletişim",
+        emailLabel: "E-posta:",
+        instagramLabel: "Instagram:",
+        sendButton: "Gönder",
+        mostPopular: "En popüler",
+        bestValue: "En iyi değer",
         selectedPlanPrefix: "Seçilen plan: ",
         modalSubtextMonthly: "Ödeme yöntemini seçin ve aylık faturalandırma ile devam edin.",
         modalSubtextYearly: "Ödeme yöntemini seçin ve devam edin. Yıllık faturalandırma %30 tasarruf sağlar.",
-        paymentLabel: "Bir ödeme yöntemi seçin",
         continueButton: "Aboneliği sürdür",
-        mostPopular: "En popüler",
-        bestValue: "En iyi değer",
-        paymentCard: "Kredi veya banka kartı",
-        paymentApple: "Apple Pay",
-        paymentGoogle: "Google Pay",
-        paymentPaypal: "PayPal",
-        missingName: "Lütfen hesap adını girin.",
-        missingPayment: "Lütfen bir ödeme yöntemi seçin.",
+        missingCardNumber: "Lütfen geçerli bir kart numarası girin.",
+        missingExpiry: "Lütfen geçerli bir son kullanma tarihi girin (AA/YY).",
+        missingCvc: "Lütfen geçerli bir güvenlik kodu girin.",
+        missingCardHolder: "Lütfen kart sahibinin adını girin.",
+        missingCountry: "Lütfen ülke / bölge girin.",
+        missingPaypalEmail: "Lütfen geçerli bir PayPal e-postası girin.",
+        missingWallet: "Lütfen tüm hesap bilgilerini tamamlayın.",
         readyMonthly: "{plan} için aylık faturalandırma ile devam etmeye hazırsınız.",
         readyYearly: "{plan} için yıllık faturalandırma ile devam etmeye hazırsınız. Yıllık faturalandırma %30 tasarruf sağlar."
       }
-    };
-
-    const planPrices = {
-      Basic: 19,
-      Standard: 49,
-      Premium: 99
     };
 
     document.addEventListener("DOMContentLoaded", () => {
@@ -563,6 +557,7 @@
         });
       });
 
+      setPaymentMethod("card");
       updateBillingButtons();
       updatePricing();
     });
@@ -572,12 +567,10 @@
     }
 
     function formatEuro(value) {
-      const decimals = Number.isInteger(value) ? 0 : 2;
       return new Intl.NumberFormat(currentLang, {
         style: "currency",
         currency: "EUR",
-        maximumFractionDigits: decimals,
-        minimumFractionDigits: decimals
+        maximumFractionDigits: Number.isInteger(value) ? 0 : 2
       }).format(value).replace(/\u00a0/g, " ");
     }
 
@@ -605,11 +598,9 @@
 
       document.querySelectorAll(".billing-btn").forEach((btn) => {
         btn.classList.toggle("active", btn.dataset.billing === billingMode);
-        if (btn.dataset.billing === "monthly") {
-          btn.textContent = dict.billingMonthly || "Monthly";
-        } else {
-          btn.textContent = dict.billingYearly || "Yearly -30%";
-        }
+        btn.textContent = btn.dataset.billing === "monthly"
+          ? (dict.billingMonthly || "Monthly")
+          : (dict.billingYearly || "Yearly -30%");
       });
     }
 
@@ -643,6 +634,24 @@
       localStorage.setItem("theme", isLight ? "light" : "dark");
     }
 
+    function setPaymentMethod(method) {
+      selectedMethod = method;
+
+      document.querySelectorAll(".method-tab").forEach((tab) => {
+        tab.classList.toggle("active", tab.dataset.method === method);
+      });
+
+      document.querySelectorAll(".method-panel").forEach((panel) => {
+        panel.classList.toggle("active", panel.dataset.method === method);
+      });
+
+      const status = document.getElementById("modalStatus");
+      if (status) {
+        status.textContent = "";
+        status.className = "modal-status";
+      }
+    }
+
     function openModal(plan) {
       selectedPlan = plan;
 
@@ -657,13 +666,14 @@
       billingTypeText.textContent = billingMode === "yearly"
         ? (t().billingYearly || "Yearly -30%")
         : (t().billingMonthly || "Monthly");
-
       status.textContent = "";
+
       modal.classList.add("open");
       modal.setAttribute("aria-hidden", "false");
       document.body.style.overflow = "hidden";
 
       updateModalCopy();
+      setPaymentMethod(selectedMethod);
     }
 
     function closeModal() {
@@ -696,22 +706,97 @@
       }
     }
 
-    function continuePurchase() {
-      const name = document.getElementById("modalName").value.trim();
-      const status = document.getElementById("modalStatus");
-      const paymentMethod = document.querySelector('input[name="paymentMethod"]:checked');
-      const dict = t();
+    function validateCardNumber(value) {
+      const digits = value.replace(/\D/g, "");
+      return digits.length >= 13 && digits.length <= 19;
+    }
 
-      if (!paymentMethod) {
-        status.textContent = dict.missingPayment || "Please choose a payment method.";
-        status.className = "modal-status error";
-        return;
+    function validateExpiry(value) {
+      return /^(0[1-9]|1[0-2])\/\d{2}$/.test(value.trim());
+    }
+
+    function validateCvc(value) {
+      const digits = value.replace(/\D/g, "");
+      return digits.length >= 3 && digits.length <= 4;
+    }
+
+    function validateEmail(value) {
+      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value.trim());
+    }
+
+    function continuePurchase() {
+      const dict = t();
+      const status = document.getElementById("modalStatus");
+      const name = document.getElementById("modalName").value.trim();
+      const billingLabel = billingMode === "yearly"
+        ? (dict.billingYearly || "Yearly -30%")
+        : (dict.billingMonthly || "Monthly");
+
+      if (selectedMethod === "card") {
+        const cardNumber = document.getElementById("cardNumber").value.trim();
+        const cardExpiry = document.getElementById("cardExpiry").value.trim();
+        const cardCvc = document.getElementById("cardCvc").value.trim();
+        const cardHolder = document.getElementById("cardHolder").value.trim();
+        const cardCountry = document.getElementById("cardCountry").value.trim();
+
+        if (!validateCardNumber(cardNumber)) {
+          status.textContent = dict.missingCardNumber || "Please enter a valid card number.";
+          status.className = "modal-status error";
+          return;
+        }
+        if (!validateExpiry(cardExpiry)) {
+          status.textContent = dict.missingExpiry || "Please enter a valid expiry date (MM/YY).";
+          status.className = "modal-status error";
+          return;
+        }
+        if (!validateCvc(cardCvc)) {
+          status.textContent = dict.missingCvc || "Please enter a valid security code.";
+          status.className = "modal-status error";
+          return;
+        }
+        if (!cardHolder) {
+          status.textContent = dict.missingCardHolder || "Please enter the cardholder name.";
+          status.className = "modal-status error";
+          return;
+        }
+        if (!cardCountry) {
+          status.textContent = dict.missingCountry || "Please enter the country / region.";
+          status.className = "modal-status error";
+          return;
+        }
       }
 
-      if (!name) {
-        status.textContent = dict.missingName || "Please enter the name on the account.";
-        status.className = "modal-status error";
-        return;
+      if (selectedMethod === "paypal") {
+        const paypalEmail = document.getElementById("paypalEmail").value.trim();
+        if (!validateEmail(paypalEmail)) {
+          status.textContent = dict.missingPaypalEmail || "Please enter a valid PayPal email address.";
+          status.className = "modal-status error";
+          return;
+        }
+      }
+
+      if (selectedMethod === "apple") {
+        const appleName = document.getElementById("appleName").value.trim();
+        const appleAccount = document.getElementById("appleAccount").value.trim();
+        const appleCountry = document.getElementById("appleCountry").value.trim();
+
+        if (!appleName || !appleAccount || !appleCountry) {
+          status.textContent = dict.missingWallet || "Please complete all account details.";
+          status.className = "modal-status error";
+          return;
+        }
+      }
+
+      if (selectedMethod === "google") {
+        const googleName = document.getElementById("googleName").value.trim();
+        const googleAccount = document.getElementById("googleAccount").value.trim();
+        const googleCountry = document.getElementById("googleCountry").value.trim();
+
+        if (!googleName || !googleAccount || !googleCountry) {
+          status.textContent = dict.missingWallet || "Please complete all account details.";
+          status.className = "modal-status error";
+          return;
+        }
       }
 
       const template = billingMode === "yearly"
@@ -724,4 +809,4 @@
   </script>
 
 </body>
-</html>
+</html> 
