@@ -5,151 +5,188 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Elevate Studio Flow</title>
   <link rel="stylesheet" href="style.css">
-</head> <script>
-  function toggleTheme() {
-    document.body.classList.toggle("light-mode");
-    localStorage.setItem("theme", document.body.classList.contains("light-mode") ? "light" : "dark");
-  }
-
-  window.onload = () => {
-    const saved = localStorage.getItem("theme");
-    if (saved === "light") {
-      document.body.classList.add("light-mode");
-    }
-  };
-</script>
+</head>
 <body>
 
   <!-- Navbar -->
   <header class="navbar">
-  <div class="logo">
-  <img src="logo.png" class="logo-img">
-  <span>Elevate Studio Flow</span>
-</div>
-    <nav>
-      <a href="#services">Services</a>
-      <a href="#pricing">Pricing</a>
-      <a href="#contact">Contact</a>
-    </nav>
-  </header>
-<button onclick="toggleTheme()">🌙</button>
-
-  <!-- Hero -->
-  <section class="hero">
-  <h1>We design modern websites that help your business grow</h1>
-  <p>Elevate Studio Flow provides web design, development, and branding solutions tailored for modern businesses.</p>
-  <button onclick="scrollToContact()">Start Free Trial</button>
-</section>
-
-  <!-- Services -->
-  <section id="services">
-    <h2>Services</h2>
-    <div class="cards">
-      <div class="card">Web Design</div>
-      <div class="card">Development</div>
-      <div class="card">Branding</div>
-    </div>
-  </section>
-
-  <!-- Pricing -->
-  <section id="pricing">
-  <h2>Pricing</h2>
-
-  <div class="cards">
-    <div class="card">
-      <h3>Basic</h3>
-      <p>€19 / month</p>
-      <button onclick="openModal('Basic')">Start Free Trial</button>
-    </div>
-
-    <div class="card">
-      <h3>Standard</h3>
-      <p>€49 / month</p>
-      <button onclick="openModal('Standard')">Start Free Trial</button>
-    </div>
-
-    <div class="card">
-      <h3>Premium</h3>
-      <p>€99 / month</p>
-      <button onclick="openModal('Premium')">Start Free Trial</button>
-    </div>
-  </div>
-</section>
-
-  <section id="faq">
-  <h2>FAQ</h2>
-  <div>
-    <p><strong>How long does it take?</strong><br>Usually 1–2 weeks.</p>
-    <p><strong>Can I cancel?</strong><br>Yes, anytime.</p>
-  </div>
-</section>
-  
-<section id="testimonials">
-  <h2>What clients say</h2>
-  <div class="cards">
-    <div class="card">"Great service!" – Alex</div>
-    <div class="card">"Amazing design!" – Sarah</div>
-  </div>
-</section>
-  
-  <!-- Contact -->
-  <section id="contact">
-  <h2>Contact Us</h2>
-
-  <p>Email: ElevateStudioFlow@gmail.com</p>
-
-  <p>
-    Instagram: 
-    <a href="https://www.instagram.com/elevate_studio_flow?igsh=MTUxeWF5ZnRpZHduNg==" target="_blank">
-      @elevate_studio_flow
+    <a href="#" class="logo">
+      <img src="logo.png" class="logo-img" alt="Elevate Studio Flow Logo">
+      <span>Elevate Studio Flow</span>
     </a>
-  </p>
 
-  <form>
-    <input type="text" placeholder="Name" required>
-    <input type="email" placeholder="Email" required>
-    <textarea placeholder="Message"></textarea>
-    <button type="submit">Send</button>
-  </form>
-</section>
+    <div class="nav-actions">
+      <nav>
+        <a href="#services">Services</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#faq">FAQ</a>
+        <a href="#testimonials">Reviews</a>
+        <a href="#contact">Contact</a>
+      </nav>
 
-function openModal(plan) {
-  const modal = document.getElementById("modal");
-  const title = document.getElementById("planTitle");
+      <button type="button" onclick="toggleTheme()" class="theme-toggle" aria-label="Toggle theme">
+        🌙
+      </button>
+    </div>
+  </header>
 
-  title.innerText = "Selected Plan: " + plan;
+  <main>
+    <!-- Hero -->
+    <section class="hero">
+      <p class="eyebrow">Digital Studio</p>
+      <h1>We design modern websites that help your business grow</h1>
+      <p>
+        Elevate Studio Flow provides web design, development, and branding solutions tailored for modern businesses.
+      </p>
+      <button type="button" onclick="openModal('Free Trial')">Start Free Trial</button>
+    </section>
 
-  modal.style.display = "flex";
-}
+    <!-- Services -->
+    <section id="services">
+      <h2>Services</h2>
+      <div class="cards">
+        <div class="card">
+          <h3>Web Design</h3>
+          <p>Clean, modern layouts built to convert visitors into clients.</p>
+        </div>
+        <div class="card">
+          <h3>Development</h3>
+          <p>Fast, responsive websites that work on every device.</p>
+        </div>
+        <div class="card">
+          <h3>Branding</h3>
+          <p>Logos, colors, and visuals that make your business stand out.</p>
+        </div>
+      </div>
+    </section>
 
-  <div id="modal" class="modal">
-  <div class="modal-box">
-    <span onclick="closeModal()">×</span>
+    <!-- Pricing -->
+    <section id="pricing">
+      <h2>Pricing</h2>
 
-    <h2 id="planTitle">Selected Plan</h2>
+      <div class="cards">
+        <div class="card">
+          <h3>Basic</h3>
+          <p>€19 / month</p>
+          <button type="button" onclick="openModal('Basic')">Start Free Trial</button>
+        </div>
 
-    <input type="text" placeholder="Name">
-    <input type="email" placeholder="Email">
+        <div class="card">
+          <h3>Standard</h3>
+          <p>€49 / month</p>
+          <button type="button" onclick="openModal('Standard')">Start Free Trial</button>
+        </div>
 
-    <button class="modal-btn">Start Free Trial</button>
+        <div class="card">
+          <h3>Premium</h3>
+          <p>€99 / month</p>
+          <button type="button" onclick="openModal('Premium')">Start Free Trial</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq">
+      <h2>FAQ</h2>
+      <div class="faq-list">
+        <div class="faq-item">
+          <p><strong>How long does it take?</strong><br>Usually 1–2 weeks.</p>
+        </div>
+        <div class="faq-item">
+          <p><strong>Can I cancel?</strong><br>Yes, anytime.</p>
+        </div>
+        <div class="faq-item">
+          <p><strong>Do you offer support?</strong><br>Yes, depending on your plan.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section id="testimonials">
+      <h2>What clients say</h2>
+      <div class="cards">
+        <div class="card">"Great service!" – Alex</div>
+        <div class="card">"Amazing design!" – Sarah</div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+      <h2>Contact Us</h2>
+
+      <p>Email: <a href="mailto:ElevateStudioFlow@gmail.com">ElevateStudioFlow@gmail.com</a></p>
+
+      <p>
+        Instagram:
+        <a href="https://www.instagram.com/elevate_studio_flow?igsh=MTUxeWF5ZnRpZHduNg==" target="_blank" rel="noopener noreferrer">
+          @elevate_studio_flow
+        </a>
+      </p>
+
+      <form>
+        <input type="text" placeholder="Name" required>
+        <input type="email" placeholder="Email" required>
+        <textarea placeholder="Message"></textarea>
+        <button type="submit">Send</button>
+      </form>
+    </section>
+  </main>
+
+  <!-- Modal -->
+  <div id="modal" class="modal" aria-hidden="true" onclick="closeModal()">
+    <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="planTitle" onclick="event.stopPropagation()">
+      <button type="button" class="close" onclick="closeModal()" aria-label="Close modal">×</button>
+
+      <h2 id="planTitle">Selected Plan</h2>
+      <p class="modal-subtext">
+        Start your 14-day free trial. Cancel anytime.
+      </p>
+
+      <div class="payment-methods">
+        <p class="payment-label">Payment method</p>
+        <label><input type="radio" name="paymentMethod" checked> Card</label>
+        <label><input type="radio" name="paymentMethod"> PayPal</label>
+        <label><input type="radio" name="paymentMethod"> Apple Pay</label>
+      </div>
+
+      <input type="text" placeholder="Name">
+      <input type="email" placeholder="Email">
+
+      <button type="button" class="modal-btn">Start Free Trial</button>
+    </div>
   </div>
-</div>
 
-  function openModal(plan) {
-  const modal = document.getElementById("modal");
-  const title = document.getElementById("planTitle");
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const savedTheme = localStorage.getItem("theme");
+      if (savedTheme === "light") {
+        document.body.classList.add("light-mode");
+      }
+    });
 
-  title.innerText = "Selected Plan: " + plan;
+    function toggleTheme() {
+      const isLight = document.body.classList.toggle("light-mode");
+      localStorage.setItem("theme", isLight ? "light" : "dark");
+    }
 
-  modal.style.display = "flex";
-  modal.style.position = "fixed";
-  modal.style.top = "0";
-  modal.style.left = "0";
-  modal.style.width = "100vw";
-  modal.style.height = "100vh";
-  modal.style.background = "rgba(255,0,0,0.5)";
-  modal.style.zIndex = "999999";
-}
-  
+    function openModal(plan) {
+      const modal = document.getElementById("modal");
+      const title = document.getElementById("planTitle");
+
+      title.textContent = "Selected Plan: " + plan;
+      modal.style.display = "flex";
+      modal.setAttribute("aria-hidden", "false");
+      document.body.style.overflow = "hidden";
+    }
+
+    function closeModal() {
+      const modal = document.getElementById("modal");
+
+      modal.style.display = "none";
+      modal.setAttribute("aria-hidden", "true");
+      document.body.style.overflow = "";
+    }
+  </script>
+
 </body>
 </html>
