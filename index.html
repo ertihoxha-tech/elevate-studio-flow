@@ -134,6 +134,22 @@ function openModal(plan) {
     <button class="modal-btn">Start Free Trial</button>
   </div>
 </div>
+
+  function openModal(plan) {
+  const modal = document.getElementById("modal");
+  const title = document.getElementById("planTitle");
+
+  title.innerText = "Selected Plan: " + plan;
+
+  modal.style.display = "flex";
+  modal.style.position = "fixed";
+  modal.style.top = "0";
+  modal.style.left = "0";
+  modal.style.width = "100vw";
+  modal.style.height = "100vh";
+  modal.style.background = "rgba(255,0,0,0.5)";
+  modal.style.zIndex = "999999";
+}
   
 </body>
 </html>
