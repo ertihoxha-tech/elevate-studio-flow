@@ -23,6 +23,41 @@
         <a href="#contact">Contact</a>
       </nav>
 
+      <select id="languageSelect" class="language-select" aria-label="Select language">
+        <option value="en">English</option>
+        <option value="de">Deutsch</option>
+        <option value="fr">Français</option>
+        <option value="es">Español</option>
+        <option value="it">Italiano</option>
+        <option value="pt">Português</option>
+        <option value="nl">Nederlands</option>
+        <option value="pl">Polski</option>
+        <option value="sv">Svenska</option>
+        <option value="da">Dansk</option>
+        <option value="no">Norsk</option>
+        <option value="fi">Suomi</option>
+        <option value="cs">Čeština</option>
+        <option value="sk">Slovenčina</option>
+        <option value="hu">Magyar</option>
+        <option value="ro">Română</option>
+        <option value="bg">Български</option>
+        <option value="el">Ελληνικά</option>
+        <option value="tr">Türkçe</option>
+        <option value="ar">العربية</option>
+        <option value="he">עברית</option>
+        <option value="ru">Русский</option>
+        <option value="uk">Українська</option>
+        <option value="ja">日本語</option>
+        <option value="ko">한국어</option>
+        <option value="zh">中文</option>
+        <option value="zh-TW">繁體中文</option>
+        <option value="hi">हिन्दी</option>
+        <option value="bn">বাংলা</option>
+        <option value="th">ไทย</option>
+        <option value="vi">Tiếng Việt</option>
+        <option value="id">Bahasa Indonesia</option>
+      </select>
+
       <button type="button" onclick="toggleTheme()" class="theme-toggle" aria-label="Toggle theme">🌙</button>
     </div>
   </header>
@@ -128,53 +163,48 @@
 
       <h2 id="planTitle">Selected Plan</h2>
       <p class="modal-subtext">
-        Start your 14-day free trial. Cancel anytime.
+        Start your 14-day free trial. Verify your email to continue.
       </p>
 
-      <div class="checkout-summary">
-        <div>
-          <strong>Plan</strong>
-          <p id="planNameText">Selected Plan</p>
-        </div>
-        <div>
-          <strong>Trial</strong>
-          <p>14 days</p>
-        </div>
+      <div class="verification-card">
+        <p class="verification-label">Email verification</p>
+        <p class="verification-note">
+          This demo validates the email format only. Real email verification needs a backend or email service.
+        </p>
       </div>
 
-      <div class="payment-methods">
-        <p class="payment-label">Choose a payment method</p>
+      <input type="text" id="modalName" placeholder="Name" autocomplete="name">
+      <input type="email" id="modalEmail" placeholder="Email" autocomplete="email">
 
-        <label class="payment-option">
-          <input type="radio" name="paymentMethod" checked>
-          <span class="payment-pill">Credit or debit card</span>
-        </label>
-
-        <label class="payment-option">
-          <input type="radio" name="paymentMethod">
-          <span class="payment-pill">Apple Pay</span>
-        </label>
-
-        <label class="payment-option">
-          <input type="radio" name="paymentMethod">
-          <span class="payment-pill">PayPal</span>
-        </label>
-      </div>
-
-      <input type="text" id="modalName" placeholder="Name">
-      <input type="email" id="modalEmail" placeholder="Email">
-
-      <button type="button" class="modal-btn" onclick="submitForm()">Start Free Trial</button>
+      <button type="button" class="modal-btn" id="modalVerifyBtn" onclick="submitVerification()">Send verification link</button>
+      <p id="modalStatus" class="modal-status" aria-live="polite"></p>
     </div>
   </div>
 
   <script>
+    const languageSelect = document.getElementById("languageSelect");
+
     document.addEventListener("DOMContentLoaded", () => {
       const savedTheme = localStorage.getItem("theme");
       if (savedTheme === "light") {
         document.body.classList.add("light-mode");
       }
+
+      const savedLanguage = localStorage.getItem("language") || "en";
+      languageSelect.value = savedLanguage;
+      applyLanguage(savedLanguage);
+
+      languageSelect.addEventListener("change", (e) => {
+        const lang = e.target.value;
+        localStorage.setItem("language", lang);
+        applyLanguage(lang);
+      });
     });
+
+    function applyLanguage(lang) {
+      document.documentElement.lang = lang;
+      document.documentElement.dir = (lang === "ar" || lang === "he") ? "rtl" : "ltr";
+    }
 
     function toggleTheme() {
       const isLight = document.body.classList.toggle("light-mode");
@@ -184,12 +214,15 @@
     function openModal(plan) {
       const modal = document.getElementById("modal");
       const title = document.getElementById("planTitle");
-      const planNameText = document.getElementById("planNameText");
+      const status = document.getElementById("modalStatus");
+      const verifyBtn = document.getElementById("modalVerifyBtn");
 
       title.textContent = "Selected Plan: " + plan;
-      planNameText.textContent = plan;
+      status.textContent = "";
+      verifyBtn.textContent = "Send verification link";
+      verifyBtn.disabled = false;
 
-      modal.style.display = "flex";
+      modal.classList.add("open");
       modal.setAttribute("aria-hidden", "false");
       document.body.style.overflow = "hidden";
     }
@@ -197,22 +230,34 @@
     function closeModal() {
       const modal = document.getElementById("modal");
 
-      modal.style.display = "none";
+      modal.classList.remove("open");
       modal.setAttribute("aria-hidden", "true");
       document.body.style.overflow = "";
     }
 
-    function submitForm() {
+    function submitVerification() {
       const name = document.getElementById("modalName").value.trim();
       const email = document.getElementById("modalEmail").value.trim();
+      const status = document.getElementById("modalStatus");
+      const verifyBtn = document.getElementById("modalVerifyBtn");
 
       if (!name || !email) {
-        alert("Please fill in your name and email.");
+        status.textContent = "Please enter your name and email.";
+        status.className = "modal-status error";
         return;
       }
 
-      alert("Free trial started for " + name + ".");
-      closeModal();
+      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailPattern.test(email)) {
+        status.textContent = "Please enter a valid email address.";
+        status.className = "modal-status error";
+        return;
+      }
+
+      status.textContent = "Email looks valid. A real verification link needs a backend or email service to send it.";
+      status.className = "modal-status success";
+      verifyBtn.textContent = "Verification ready";
+      verifyBtn.disabled = true;
     }
   </script>
 
