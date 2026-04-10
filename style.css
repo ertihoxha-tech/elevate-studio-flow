@@ -32,7 +32,6 @@ main {
   width: 100%;
 }
 
-/* Navbar */
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -117,7 +116,6 @@ main {
   transform: translateY(-1px);
 }
 
-/* Hero */
 .hero {
   text-align: center;
   padding: 120px 20px 90px;
@@ -147,7 +145,6 @@ main {
   opacity: 0.9;
 }
 
-/* Sections */
 section {
   padding: 64px 20px;
   text-align: center;
@@ -168,7 +165,35 @@ section h2 {
   opacity: 0.9;
 }
 
-/* Cards */
+.billing-toggle {
+  display: inline-flex;
+  gap: 8px;
+  padding: 8px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.06);
+  margin: 0 auto 26px;
+  align-items: center;
+}
+
+.billing-btn {
+  border: none;
+  border-radius: 999px;
+  background: transparent;
+  color: white;
+  padding: 10px 16px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease, color 0.2s ease;
+}
+
+.billing-btn.active {
+  background: #3b82f6;
+  color: white;
+}
+
+.billing-btn:hover {
+  transform: translateY(-1px);
+}
+
 .cards {
   display: flex;
   justify-content: center;
@@ -284,7 +309,6 @@ button:active {
   margin-top: 16px;
 }
 
-/* FAQ */
 #faq .faq-list {
   display: grid;
   gap: 14px;
@@ -304,13 +328,11 @@ button:active {
   margin: 0;
 }
 
-/* Testimonials */
 #testimonials .card {
   text-align: left;
   font-style: italic;
 }
 
-/* Contact */
 #contact {
   padding-bottom: 90px;
 }
@@ -356,7 +378,6 @@ textarea::placeholder {
   color: #64748b;
 }
 
-/* Modal */
 .modal {
   position: fixed;
   inset: 0;
@@ -524,7 +545,6 @@ textarea::placeholder {
   transform: scale(1.04);
 }
 
-/* Light mode */
 .light-mode {
   background: #f8fafc;
   color: #0f172a;
@@ -545,6 +565,19 @@ textarea::placeholder {
 .light-mode .theme-toggle,
 .light-mode .language-select {
   background: #e2e8f0;
+}
+
+.light-mode .billing-toggle {
+  background: #e2e8f0;
+}
+
+.light-mode .billing-btn {
+  color: #0f172a;
+}
+
+.light-mode .billing-btn.active {
+  background: #3b82f6;
+  color: white;
 }
 
 .light-mode .hero p,
@@ -571,6 +604,8 @@ textarea::placeholder {
   color: #0f172a;
 }
 
+.light-mode .payment-methods,
+.light-mode .checkout-summary,
 .light-mode .verification-card {
   background: #f8fafc;
 }
@@ -588,7 +623,6 @@ textarea::placeholder {
   color: #0f172a;
 }
 
-/* Responsive */
 @media (max-width: 768px) {
   .navbar {
     flex-direction: column;
@@ -622,5 +656,11 @@ textarea::placeholder {
 
   .checkout-summary {
     flex-direction: column;
+  }
+
+  .billing-toggle {
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
   }
 }
