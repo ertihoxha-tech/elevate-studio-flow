@@ -8,7 +8,6 @@
 </head>
 <body>
 
-  <!-- Navbar -->
   <header class="navbar">
     <a href="#" class="logo">
       <img src="logo.png" class="logo-img" alt="Elevate Studio Flow Logo">
@@ -24,14 +23,11 @@
         <a href="#contact">Contact</a>
       </nav>
 
-      <button type="button" onclick="toggleTheme()" class="theme-toggle" aria-label="Toggle theme">
-        🌙
-      </button>
+      <button type="button" onclick="toggleTheme()" class="theme-toggle" aria-label="Toggle theme">🌙</button>
     </div>
   </header>
 
   <main>
-    <!-- Hero -->
     <section class="hero">
       <p class="eyebrow">Digital Studio</p>
       <h1>We design modern websites that help your business grow</h1>
@@ -41,7 +37,6 @@
       <button type="button" onclick="openModal('Free Trial')">Start Free Trial</button>
     </section>
 
-    <!-- Services -->
     <section id="services">
       <h2>Services</h2>
       <div class="cards">
@@ -60,10 +55,8 @@
       </div>
     </section>
 
-    <!-- Pricing -->
     <section id="pricing">
       <h2>Pricing</h2>
-
       <div class="cards">
         <div class="card">
           <h3>Basic</h3>
@@ -85,7 +78,6 @@
       </div>
     </section>
 
-    <!-- FAQ -->
     <section id="faq">
       <h2>FAQ</h2>
       <div class="faq-list">
@@ -101,7 +93,6 @@
       </div>
     </section>
 
-    <!-- Testimonials -->
     <section id="testimonials">
       <h2>What clients say</h2>
       <div class="cards">
@@ -110,7 +101,6 @@
       </div>
     </section>
 
-    <!-- Contact -->
     <section id="contact">
       <h2>Contact Us</h2>
 
@@ -132,7 +122,6 @@
     </section>
   </main>
 
-  <!-- Modal -->
   <div id="modal" class="modal" aria-hidden="true" onclick="closeModal()">
     <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="planTitle" onclick="event.stopPropagation()">
       <button type="button" class="close" onclick="closeModal()" aria-label="Close modal">×</button>
@@ -142,17 +131,40 @@
         Start your 14-day free trial. Cancel anytime.
       </p>
 
-      <div class="payment-methods">
-        <p class="payment-label">Payment method</p>
-        <label><input type="radio" name="paymentMethod" checked> Card</label>
-        <label><input type="radio" name="paymentMethod"> PayPal</label>
-        <label><input type="radio" name="paymentMethod"> Apple Pay</label>
+      <div class="checkout-summary">
+        <div>
+          <strong>Plan</strong>
+          <p id="planNameText">Selected Plan</p>
+        </div>
+        <div>
+          <strong>Trial</strong>
+          <p>14 days</p>
+        </div>
       </div>
 
-      <input type="text" placeholder="Name">
-      <input type="email" placeholder="Email">
+      <div class="payment-methods">
+        <p class="payment-label">Choose a payment method</p>
 
-      <button type="button" class="modal-btn">Start Free Trial</button>
+        <label class="payment-option">
+          <input type="radio" name="paymentMethod" checked>
+          <span class="payment-pill">Credit or debit card</span>
+        </label>
+
+        <label class="payment-option">
+          <input type="radio" name="paymentMethod">
+          <span class="payment-pill">Apple Pay</span>
+        </label>
+
+        <label class="payment-option">
+          <input type="radio" name="paymentMethod">
+          <span class="payment-pill">PayPal</span>
+        </label>
+      </div>
+
+      <input type="text" id="modalName" placeholder="Name">
+      <input type="email" id="modalEmail" placeholder="Email">
+
+      <button type="button" class="modal-btn" onclick="submitForm()">Start Free Trial</button>
     </div>
   </div>
 
@@ -172,8 +184,11 @@
     function openModal(plan) {
       const modal = document.getElementById("modal");
       const title = document.getElementById("planTitle");
+      const planNameText = document.getElementById("planNameText");
 
       title.textContent = "Selected Plan: " + plan;
+      planNameText.textContent = plan;
+
       modal.style.display = "flex";
       modal.setAttribute("aria-hidden", "false");
       document.body.style.overflow = "hidden";
@@ -185,6 +200,19 @@
       modal.style.display = "none";
       modal.setAttribute("aria-hidden", "true");
       document.body.style.overflow = "";
+    }
+
+    function submitForm() {
+      const name = document.getElementById("modalName").value.trim();
+      const email = document.getElementById("modalEmail").value.trim();
+
+      if (!name || !email) {
+        alert("Please fill in your name and email.");
+        return;
+      }
+
+      alert("Free trial started for " + name + ".");
+      closeModal();
     }
   </script>
 
