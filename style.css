@@ -1,4 +1,5 @@
-* {
+
+  * {
   box-sizing: border-box;
 }
 
@@ -28,6 +29,7 @@ main {
   width: 100%;
 }
 
+/* Navbar */
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -94,6 +96,7 @@ main {
   filter: brightness(1.08);
 }
 
+/* Hero */
 .hero {
   text-align: center;
   padding: 120px 20px 90px;
@@ -123,6 +126,7 @@ main {
   opacity: 0.9;
 }
 
+/* Sections */
 section {
   padding: 64px 20px;
   text-align: center;
@@ -133,6 +137,7 @@ section h2 {
   margin: 0 0 28px;
 }
 
+/* Cards */
 .cards {
   display: flex;
   justify-content: center;
@@ -165,6 +170,7 @@ section h2 {
   opacity: 0.92;
 }
 
+/* Buttons */
 button {
   padding: 11px 18px;
   border: none;
@@ -189,6 +195,7 @@ button:active {
   margin-top: 16px;
 }
 
+/* FAQ */
 #faq .faq-list {
   display: grid;
   gap: 14px;
@@ -207,11 +214,13 @@ button:active {
   margin: 0;
 }
 
+/* Testimonials */
 #testimonials .card {
   text-align: left;
   font-style: italic;
 }
 
+/* Contact */
 #contact {
   padding-bottom: 90px;
 }
@@ -256,6 +265,7 @@ textarea::placeholder {
   color: #64748b;
 }
 
+/* Modal */
 .modal {
   display: none;
   position: fixed;
@@ -290,6 +300,26 @@ textarea::placeholder {
   color: #475569;
 }
 
+.checkout-summary {
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 14px 16px;
+  border-radius: 14px;
+  background: #f8fafc;
+  margin-bottom: 16px;
+}
+
+.checkout-summary strong {
+  display: block;
+  margin-bottom: 4px;
+}
+
+.checkout-summary p {
+  margin: 0;
+  color: #0f172a;
+}
+
 .payment-methods {
   display: grid;
   gap: 10px;
@@ -304,10 +334,26 @@ textarea::placeholder {
   font-weight: 700;
 }
 
-.payment-methods label {
+.payment-option {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.payment-option input {
+  width: auto;
+  margin: 0;
+}
+
+.payment-pill {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: white;
+  border: 1px solid #cbd5e1;
   color: #0f172a;
 }
 
@@ -333,6 +379,7 @@ textarea::placeholder {
   padding: 0;
 }
 
+/* Light mode */
 .light-mode {
   background: #f8fafc;
   color: #0f172a;
@@ -377,14 +424,21 @@ textarea::placeholder {
   color: #0f172a;
 }
 
+.light-mode .checkout-summary,
 .light-mode .payment-methods {
   background: #f8fafc;
+}
+
+.light-mode .payment-pill {
+  background: white;
+  border-color: #cbd5e1;
 }
 
 .light-mode .close {
   color: #0f172a;
 }
 
+/* Responsive */
 @media (max-width: 768px) {
   .navbar {
     flex-direction: column;
@@ -414,5 +468,9 @@ textarea::placeholder {
 
   .modal-box {
     padding: 22px;
+  }
+
+  .checkout-summary {
+    flex-direction: column;
   }
 }
