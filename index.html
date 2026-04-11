@@ -1,0 +1,1347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Elevate Studio Flow</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="navbar">
+    <a href="#" class="logo">
+      <img src="logo.png" class="logo-img" alt="Elevate Studio Flow Logo">
+      <span id="brandName">Elevate Studio Flow</span>
+    </a>
+
+    <div class="nav-actions">
+      <nav>
+        <a href="#services" id="navServices">Services</a>
+        <a href="#pricing" id="navPricing">Pricing</a>
+        <a href="#faq" id="navFAQ">FAQ</a>
+        <a href="#testimonials" id="navReviews">Reviews</a>
+        <a href="#contact" id="navContact">Contact</a>
+      </nav>
+
+      <select id="languageSelect" class="language-select" aria-label="Select language">
+        <option value="en">English</option>
+        <option value="de">Deutsch</option>
+        <option value="fr">Français</option>
+        <option value="es">Español</option>
+        <option value="it">Italiano</option>
+        <option value="pt">Português</option>
+        <option value="nl">Nederlands</option>
+        <option value="pl">Polski</option>
+        <option value="sv">Svenska</option>
+        <option value="da">Dansk</option>
+        <option value="no">Norsk</option>
+        <option value="fi">Suomi</option>
+        <option value="cs">Čeština</option>
+        <option value="sk">Slovenčina</option>
+        <option value="hu">Magyar</option>
+        <option value="ro">Română</option>
+        <option value="bg">Български</option>
+        <option value="el">Ελληνικά</option>
+        <option value="tr">Türkçe</option>
+        <option value="ar">العربية</option>
+        <option value="he">עברית</option>
+        <option value="ru">Русский</option>
+        <option value="uk">Українська</option>
+        <option value="ja">日本語</option>
+        <option value="ko">한국어</option>
+        <option value="zh">中文</option>
+        <option value="zh-TW">繁體中文</option>
+        <option value="hi">हिन्दी</option>
+        <option value="bn">বাংলা</option>
+        <option value="th">ไทย</option>
+        <option value="vi">Tiếng Việt</option>
+        <option value="id">Bahasa Indonesia</option>
+      </select>
+
+      <button type="button" onclick="toggleTheme()" class="theme-toggle" aria-label="Toggle theme">🌙</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <p class="eyebrow" id="heroEyebrow">Digital Studio</p>
+      <h1 id="heroTitle">We design modern websites that help your business grow</h1>
+      <p id="heroText">Elevate Studio Flow provides web design, development, and branding solutions tailored for modern businesses.</p>
+      <button type="button" id="heroCTA" onclick="openModal('Standard')">Start Free Trial</button>
+    </section>
+
+    <section id="services">
+      <h2 id="servicesTitle">Services</h2>
+      <div class="cards">
+        <div class="card">
+          <h3 id="serviceDesignTitle">Web Design</h3>
+          <p id="serviceDesignText">Clean, modern layouts built to convert visitors into clients.</p>
+        </div>
+        <div class="card">
+          <h3 id="serviceDevTitle">Development</h3>
+          <p id="serviceDevText">Fast, responsive websites that work on every device.</p>
+        </div>
+        <div class="card">
+          <h3 id="serviceBrandTitle">Branding</h3>
+          <p id="serviceBrandText">Logos, colors, and visuals that make your business stand out.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="pricing">
+      <div class="pricing-head">
+        <h2 id="pricingTitle">Pricing</h2>
+        <p class="pricing-note" id="pricingNote">Pay yearly and save 30% compared with monthly billing.</p>
+      </div>
+
+      <div class="billing-toggle" role="tablist" aria-label="Billing period">
+        <button type="button" class="billing-btn active" data-billing="monthly" id="billingMonthly">Monthly</button>
+        <button type="button" class="billing-btn" data-billing="yearly" id="billingYearly">Yearly -30%</button>
+      </div>
+
+      <div class="cards">
+        <div class="card plan-card" data-plan="Basic" data-monthly="19" onclick="openModal('Basic')">
+          <h3 id="planBasic">Basic</h3>
+          <div class="price-block">
+            <span class="price-main">€19 / month</span>
+            <span class="price-old"></span>
+            <span class="price-sub" id="billedMonthly">Billed monthly</span>
+          </div>
+          <ul class="plan-perks">
+            <li id="basicPerk1">1 website concept</li>
+            <li id="basicPerk2">Basic responsive design</li>
+            <li id="basicPerk3">Essential branding setup</li>
+            <li id="basicPerk4">Email support</li>
+          </ul>
+          <button type="button" id="planCTA1">Start Free Trial</button>
+        </div>
+
+        <div class="card plan-card featured" data-plan="Standard" data-monthly="49" onclick="openModal('Standard')">
+          <div class="badge" id="mostPopular">Most popular</div>
+          <h3 id="planStandard">Standard</h3>
+          <div class="price-block">
+            <span class="price-main">€49 / month</span>
+            <span class="price-old"></span>
+            <span class="price-sub" id="billedMonthly2">Billed monthly</span>
+          </div>
+          <ul class="plan-perks">
+            <li id="standardPerk1">Up to 5 pages</li>
+            <li id="standardPerk2">Custom modern layout</li>
+            <li id="standardPerk3">Brand styling included</li>
+            <li id="standardPerk4">Priority support</li>
+            <li id="standardPerk5">Revision round included</li>
+          </ul>
+          <button type="button" id="planCTA2">Start Free Trial</button>
+        </div>
+
+        <div class="card plan-card premium" data-plan="Premium" data-monthly="99" onclick="openModal('Premium')">
+          <div class="badge premium-badge" id="bestValue">Best value</div>
+          <h3 id="planPremium">Premium</h3>
+          <div class="price-block">
+            <span class="price-main">€99 / month</span>
+            <span class="price-old"></span>
+            <span class="price-sub" id="billedMonthly3">Billed monthly</span>
+          </div>
+          <ul class="plan-perks">
+            <li id="premiumPerk1">Full premium website</li>
+            <li id="premiumPerk2">Advanced branding system</li>
+            <li id="premiumPerk3">Extra pages and sections</li>
+            <li id="premiumPerk4">Faster turnaround</li>
+            <li id="premiumPerk5">More revision rounds</li>
+            <li id="premiumPerk6">Launch support</li>
+          </ul>
+          <button type="button" id="planCTA3">Start Free Trial</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq">
+      <h2 id="faqTitle">FAQ</h2>
+      <div class="faq-list">
+        <div class="faq-item">
+          <p><strong id="faqQ1">How long does it take?</strong><br><span id="faqA1">Usually 1–2 weeks.</span></p>
+        </div>
+        <div class="faq-item">
+          <p><strong id="faqQ2">Can I cancel?</strong><br><span id="faqA2">Yes, anytime.</span></p>
+        </div>
+        <div class="faq-item">
+          <p><strong id="faqQ3">Do you offer support?</strong><br><span id="faqA3">Yes, depending on your plan.</span></p>
+        </div>
+      </div>
+    </section>
+
+    <section id="testimonials">
+      <h2 id="reviewsTitle">What clients say</h2>
+      <div class="cards">
+        <div class="card" id="review1">"Great service!" – Alex</div>
+        <div class="card" id="review2">"Amazing design!" – Sarah</div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2 id="contactTitle">Contact Us</h2>
+      <p id="contactText">If you have a project in mind, reach out directly through email or Instagram.</p>
+
+      <div class="contact-links">
+        <a class="contact-button" href="mailto:ElevateStudioFlow@gmail.com" id="emailButton">Email us</a>
+        <a class="contact-button" href="https://www.instagram.com/elevate_studio_flow?igsh=MTUxeWF5ZnRpZHduNg==" target="_blank" rel="noopener noreferrer" id="instagramButton">
+          Message on Instagram
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <div id="modal" class="modal" aria-hidden="true" onclick="closeModal()">
+    <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="planTitle" onclick="event.stopPropagation()">
+      <button type="button" class="close" onclick="closeModal()" aria-label="Close modal">×</button>
+
+      <h2 id="modalTitle">Selected Plan</h2>
+      <p class="modal-subtext" id="modalSubtext">Choose your payment method and continue with monthly billing.</p>
+
+      <div class="checkout-summary">
+        <div>
+          <strong id="summaryPlan">Plan</strong>
+          <p id="planNameText">Selected Plan</p>
+        </div>
+        <div>
+          <strong id="summaryBilling">Billing</strong>
+          <p id="billingTypeText">Monthly</p>
+        </div>
+      </div>
+
+      <div class="method-tabs" role="tablist" aria-label="Payment method">
+        <button type="button" class="method-tab active" data-method="card" onclick="setPaymentMethod('card')" id="paymentCardTab">Credit / Debit Card</button>
+        <button type="button" class="method-tab" data-method="paypal" onclick="setPaymentMethod('paypal')" id="paymentPaypalTab">PayPal</button>
+        <button type="button" class="method-tab" data-method="apple" onclick="setPaymentMethod('apple')" id="paymentAppleTab">Apple Pay</button>
+        <button type="button" class="method-tab" data-method="google" onclick="setPaymentMethod('google')" id="paymentGoogleTab">Google Pay</button>
+      </div>
+
+      <div class="method-panel active" data-method="card">
+        <div class="field-grid">
+          <input type="text" id="cardNumber" placeholder="Card number" inputmode="numeric" autocomplete="cc-number">
+          <input type="text" id="cardExpiry" placeholder="MM/YY" inputmode="numeric" autocomplete="cc-exp">
+          <input type="text" id="cardCvc" placeholder="Security code" inputmode="numeric" autocomplete="cc-csc">
+          <input type="text" id="cardHolder" placeholder="Cardholder name" autocomplete="cc-name">
+          <input type="text" id="cardCountry" placeholder="Country / region" autocomplete="country-name">
+        </div>
+      </div>
+
+      <div class="method-panel" data-method="paypal">
+        <input type="email" id="paypalEmail" placeholder="PayPal email address" autocomplete="email">
+        <p class="helper-text" id="paypalHelp">Use the email address linked to a PayPal account.</p>
+      </div>
+
+      <div class="method-panel" data-method="apple">
+        <div class="field-grid">
+          <input type="text" id="appleName" placeholder="Full name" autocomplete="name">
+          <input type="email" id="appleAccount" placeholder="Apple ID email or phone" autocomplete="email">
+          <input type="text" id="appleCountry" placeholder="Country / region" autocomplete="country-name">
+        </div>
+      </div>
+
+      <div class="method-panel" data-method="google">
+        <div class="field-grid">
+          <input type="text" id="googleName" placeholder="Full name" autocomplete="name">
+          <input type="email" id="googleAccount" placeholder="Google account email or phone" autocomplete="email">
+          <input type="text" id="googleCountry" placeholder="Country / region" autocomplete="country-name">
+        </div>
+      </div>
+
+      <button type="button" class="modal-btn" id="continueButton" onclick="continuePurchase()">Continue subscription</button>
+      <p id="modalStatus" class="modal-status" aria-live="polite"></p>
+    </div>
+  </div>
+
+  <script>
+    const languageSelect = document.getElementById("languageSelect");
+    const rtlLanguages = new Set(["ar", "he"]);
+    let currentLang = "en";
+    let billingMode = "monthly";
+    let selectedPlan = "Standard";
+    let selectedMethod = "card";
+
+    const texts = {
+      en: {
+        brandName: "Elevate Studio Flow",
+        navServices: "Services",
+        navPricing: "Pricing",
+        navFAQ: "FAQ",
+        navReviews: "Reviews",
+        navContact: "Contact",
+        heroEyebrow: "Digital Studio",
+        heroTitle: "We design modern websites that help your business grow",
+        heroText: "Elevate Studio Flow provides web design, development, and branding solutions tailored for modern businesses.",
+        heroCTA: "Start Free Trial",
+        servicesTitle: "Services",
+        serviceDesignTitle: "Web Design",
+        serviceDesignText: "Clean, modern layouts built to convert visitors into clients.",
+        serviceDevTitle: "Development",
+        serviceDevText: "Fast, responsive websites that work on every device.",
+        serviceBrandTitle: "Branding",
+        serviceBrandText: "Logos, colors, and visuals that make your business stand out.",
+        pricingTitle: "Pricing",
+        pricingNote: "Pay yearly and save 30% compared with monthly billing.",
+        billingMonthly: "Monthly",
+        billingYearly: "Yearly -30%",
+        billedMonthly: "Billed monthly",
+        billedYearly: "Billed yearly",
+        monthUnit: "month",
+        yearUnit: "year",
+        yearlyPerMonth: "mo billed yearly",
+        planBasic: "Basic",
+        planStandard: "Standard",
+        planPremium: "Premium",
+        mostPopular: "Most popular",
+        bestValue: "Best value",
+        basicPerk1: "1 website concept",
+        basicPerk2: "Basic responsive design",
+        basicPerk3: "Essential branding setup",
+        basicPerk4: "Email support",
+        standardPerk1: "Up to 5 pages",
+        standardPerk2: "Custom modern layout",
+        standardPerk3: "Brand styling included",
+        standardPerk4: "Priority support",
+        standardPerk5: "Revision round included",
+        premiumPerk1: "Full premium website",
+        premiumPerk2: "Advanced branding system",
+        premiumPerk3: "Extra pages and sections",
+        premiumPerk4: "Faster turnaround",
+        premiumPerk5: "More revision rounds",
+        premiumPerk6: "Launch support",
+        faqTitle: "FAQ",
+        faqQ1: "How long does it take?",
+        faqA1: "Usually 1–2 weeks.",
+        faqQ2: "Can I cancel?",
+        faqA2: "Yes, anytime.",
+        faqQ3: "Do you offer support?",
+        faqA3: "Yes, depending on your plan.",
+        reviewsTitle: "What clients say",
+        review1: "\"Great service!\" – Alex",
+        review2: "\"Amazing design!\" – Sarah",
+        contactTitle: "Contact Us",
+        contactText: "If you have a project in mind, reach out directly through email or Instagram.",
+        emailButton: "Email us",
+        instagramButton: "Message on Instagram",
+        summaryPlan: "Plan",
+        summaryBilling: "Billing",
+        modalMonthlyText: "Choose your payment method and continue with monthly billing.",
+        modalYearlyText: "Choose your payment method and continue. Yearly billing saves 30%.",
+        paymentCardTab: "Credit / Debit Card",
+        paymentPaypalTab: "PayPal",
+        paymentAppleTab: "Apple Pay",
+        paymentGoogleTab: "Google Pay",
+        paypalHelp: "Use the email address linked to a PayPal account.",
+        continueButton: "Continue subscription",
+        phCardNumber: "Card number",
+        phCardExpiry: "MM/YY",
+        phCardCvc: "Security code",
+        phCardHolder: "Cardholder name",
+        phCountry: "Country / region",
+        phPaypalEmail: "PayPal email address",
+        phFullName: "Full name",
+        phAppleAccount: "Apple ID email or phone",
+        phGoogleAccount: "Google account email or phone",
+        missingCardNumber: "Please enter a valid card number.",
+        missingExpiry: "Please enter a valid expiry date (MM/YY).",
+        missingCvc: "Please enter a valid security code.",
+        missingCardHolder: "Please enter the cardholder name.",
+        missingCountry: "Please enter the country / region.",
+        missingPaypalEmail: "Please enter a valid PayPal email address.",
+        missingWallet: "Please complete all account details.",
+        readyMonthly: "Ready to continue with {plan} on monthly billing.",
+        readyYearly: "Ready to continue with {plan} on yearly billing. Annual billing saves 30%."
+      },
+
+      de: {
+        brandName: "Elevate Studio Flow",
+        navServices: "Leistungen",
+        navPricing: "Preise",
+        navFAQ: "FAQ",
+        navReviews: "Bewertungen",
+        navContact: "Kontakt",
+        heroEyebrow: "Digitalstudio",
+        heroTitle: "Wir gestalten moderne Websites, die dein Unternehmen wachsen lassen",
+        heroText: "Elevate Studio Flow bietet Webdesign, Entwicklung und Branding für moderne Unternehmen.",
+        heroCTA: "Kostenlose Testversion starten",
+        servicesTitle: "Leistungen",
+        serviceDesignTitle: "Webdesign",
+        serviceDesignText: "Saubere, moderne Layouts, die Besucher in Kunden verwandeln.",
+        serviceDevTitle: "Entwicklung",
+        serviceDevText: "Schnelle, responsive Websites für jedes Gerät.",
+        serviceBrandTitle: "Branding",
+        serviceBrandText: "Logos, Farben und Visuals, die dein Unternehmen hervorheben.",
+        pricingTitle: "Preise",
+        pricingNote: "Jährlich zahlen und 30 % gegenüber monatlicher Abrechnung sparen.",
+        billingMonthly: "Monatlich",
+        billingYearly: "Jährlich -30 %",
+        billedMonthly: "Monatlich abgerechnet",
+        billedYearly: "Jährlich abgerechnet",
+        monthUnit: "Monat",
+        yearUnit: "Jahr",
+        yearlyPerMonth: "Monat bei jährlicher Abrechnung",
+        planBasic: "Basic",
+        planStandard: "Standard",
+        planPremium: "Premium",
+        mostPopular: "Am beliebtesten",
+        bestValue: "Bestes Angebot",
+        basicPerk1: "1 Website-Konzept",
+        basicPerk2: "Einfaches responsives Design",
+        basicPerk3: "Grundlegendes Branding-Setup",
+        basicPerk4: "E-Mail-Support",
+        standardPerk1: "Bis zu 5 Seiten",
+        standardPerk2: "Individuelles modernes Layout",
+        standardPerk3: "Branding-Styling inklusive",
+        standardPerk4: "Priorisierter Support",
+        standardPerk5: "Eine Überarbeitungsrunde",
+        premiumPerk1: "Komplette Premium-Website",
+        premiumPerk2: "Erweitertes Branding-System",
+        premiumPerk3: "Zusätzliche Seiten und Bereiche",
+        premiumPerk4: "Schnellere Umsetzung",
+        premiumPerk5: "Mehr Überarbeitungsrunden",
+        premiumPerk6: "Launch-Support",
+        faqTitle: "FAQ",
+        faqQ1: "Wie lange dauert es?",
+        faqA1: "Meist 1–2 Wochen.",
+        faqQ2: "Kann ich kündigen?",
+        faqA2: "Ja, jederzeit.",
+        faqQ3: "Bietet ihr Support?",
+        faqA3: "Ja, je nach Plan.",
+        reviewsTitle: "Was Kunden sagen",
+        review1: "\"Toller Service!\" – Alex",
+        review2: "\"Tolles Design!\" – Sarah",
+        contactTitle: "Kontakt",
+        contactText: "Wenn du ein Projekt im Kopf hast, melde dich direkt per E-Mail oder Instagram.",
+        emailButton: "E-Mail senden",
+        instagramButton: "Nachricht auf Instagram",
+        summaryPlan: "Plan",
+        summaryBilling: "Abrechnung",
+        modalMonthlyText: "Wähle deine Zahlungsmethode und fahre mit der monatlichen Abrechnung fort.",
+        modalYearlyText: "Wähle deine Zahlungsmethode und fahre fort. Jährliche Abrechnung spart 30 %.",
+        paymentCardTab: "Kredit- / Debitkarte",
+        paymentPaypalTab: "PayPal",
+        paymentAppleTab: "Apple Pay",
+        paymentGoogleTab: "Google Pay",
+        paypalHelp: "Verwende die mit dem PayPal-Konto verknüpfte E-Mail-Adresse.",
+        continueButton: "Abo fortsetzen",
+        phCardNumber: "Kartennummer",
+        phCardExpiry: "MM/JJ",
+        phCardCvc: "Sicherheitscode",
+        phCardHolder: "Name des Karteninhabers",
+        phCountry: "Land / Region",
+        phPaypalEmail: "PayPal-E-Mail-Adresse",
+        phFullName: "Vollständiger Name",
+        phAppleAccount: "Apple-ID E-Mail oder Telefonnummer",
+        phGoogleAccount: "Google-Konto E-Mail oder Telefonnummer",
+        missingCardNumber: "Bitte gib eine gültige Kartennummer ein.",
+        missingExpiry: "Bitte gib ein gültiges Ablaufdatum ein (MM/JJ).",
+        missingCvc: "Bitte gib einen gültigen Sicherheitscode ein.",
+        missingCardHolder: "Bitte gib den Namen des Karteninhabers ein.",
+        missingCountry: "Bitte gib Land / Region ein.",
+        missingPaypalEmail: "Bitte gib eine gültige PayPal-E-Mail ein.",
+        missingWallet: "Bitte vervollständige alle Kontodaten.",
+        readyMonthly: "Bereit, mit {plan} und monatlicher Abrechnung fortzufahren.",
+        readyYearly: "Bereit, mit {plan} und jährlicher Abrechnung fortzufahren. Jährliche Abrechnung spart 30 %."
+      },
+
+      fr: {
+        brandName: "Elevate Studio Flow",
+        navServices: "Services",
+        navPricing: "Tarifs",
+        navFAQ: "FAQ",
+        navReviews: "Avis",
+        navContact: "Contact",
+        heroEyebrow: "Studio numérique",
+        heroTitle: "Nous concevons des sites modernes qui aident votre entreprise à grandir",
+        heroText: "Elevate Studio Flow propose du web design, du développement et du branding pour les entreprises modernes.",
+        heroCTA: "Commencer l’essai gratuit",
+        servicesTitle: "Services",
+        serviceDesignTitle: "Web design",
+        serviceDesignText: "Des mises en page propres et modernes qui convertissent les visiteurs en clients.",
+        serviceDevTitle: "Développement",
+        serviceDevText: "Des sites rapides et responsives qui fonctionnent sur tous les appareils.",
+        serviceBrandTitle: "Branding",
+        serviceBrandText: "Logos, couleurs et visuels qui font ressortir votre entreprise.",
+        pricingTitle: "Tarifs",
+        pricingNote: "Payez à l’année et économisez 30 % par rapport à la facturation mensuelle.",
+        billingMonthly: "Mensuel",
+        billingYearly: "Annuel -30 %",
+        billedMonthly: "Facturé mensuellement",
+        billedYearly: "Facturé annuellement",
+        monthUnit: "mois",
+        yearUnit: "an",
+        yearlyPerMonth: "mois facturé annuellement",
+        planBasic: "Basique",
+        planStandard: "Standard",
+        planPremium: "Premium",
+        mostPopular: "Le plus populaire",
+        bestValue: "Meilleure offre",
+        basicPerk1: "1 concept de site",
+        basicPerk2: "Design responsive basique",
+        basicPerk3: "Installation branding essentielle",
+        basicPerk4: "Support par e-mail",
+        standardPerk1: "Jusqu’à 5 pages",
+        standardPerk2: "Mise en page moderne personnalisée",
+        standardPerk3: "Branding inclus",
+        standardPerk4: "Support prioritaire",
+        standardPerk5: "Une série de révisions",
+        premiumPerk1: "Site premium complet",
+        premiumPerk2: "Système de branding avancé",
+        premiumPerk3: "Pages et sections supplémentaires",
+        premiumPerk4: "Délai plus rapide",
+        premiumPerk5: "Plus de séries de révisions",
+        premiumPerk6: "Support au lancement",
+        faqTitle: "FAQ",
+        faqQ1: "Combien de temps cela prend-il ?",
+        faqA1: "Généralement 1 à 2 semaines.",
+        faqQ2: "Puis-je annuler ?",
+        faqA2: "Oui, à tout moment.",
+        faqQ3: "Proposez-vous un support ?",
+        faqA3: "Oui, selon votre plan.",
+        reviewsTitle: "Ce que disent les clients",
+        review1: "\"Super service !\" – Alex",
+        review2: "\"Design incroyable !\" – Sarah",
+        contactTitle: "Contact",
+        contactText: "Si vous avez un projet en tête, contactez-nous directement par e-mail ou Instagram.",
+        emailButton: "Envoyer un e-mail",
+        instagramButton: "Message sur Instagram",
+        summaryPlan: "Plan",
+        summaryBilling: "Facturation",
+        modalMonthlyText: "Choisissez votre moyen de paiement et continuez avec la facturation mensuelle.",
+        modalYearlyText: "Choisissez votre moyen de paiement et continuez. La facturation annuelle économise 30 %.",
+        paymentCardTab: "Carte de crédit / débit",
+        paymentPaypalTab: "PayPal",
+        paymentAppleTab: "Apple Pay",
+        paymentGoogleTab: "Google Pay",
+        paypalHelp: "Utilisez l’adresse e-mail liée à votre compte PayPal.",
+        continueButton: "Continuer l’abonnement",
+        phCardNumber: "Numéro de carte",
+        phCardExpiry: "MM/AA",
+        phCardCvc: "Code de sécurité",
+        phCardHolder: "Nom du titulaire",
+        phCountry: "Pays / région",
+        phPaypalEmail: "Adresse e-mail PayPal",
+        phFullName: "Nom complet",
+        phAppleAccount: "E-mail ou téléphone de l’Apple ID",
+        phGoogleAccount: "E-mail ou téléphone du compte Google",
+        missingCardNumber: "Veuillez saisir un numéro de carte valide.",
+        missingExpiry: "Veuillez saisir une date d’expiration valide (MM/AA).",
+        missingCvc: "Veuillez saisir un code de sécurité valide.",
+        missingCardHolder: "Veuillez saisir le nom du titulaire.",
+        missingCountry: "Veuillez saisir le pays / la région.",
+        missingPaypalEmail: "Veuillez saisir une adresse PayPal valide.",
+        missingWallet: "Veuillez compléter tous les détails du compte.",
+        readyMonthly: "Prêt à continuer avec {plan} en facturation mensuelle.",
+        readyYearly: "Prêt à continuer avec {plan} en facturation annuelle. La facturation annuelle économise 30 %."
+      },
+
+      es: {
+        brandName: "Elevate Studio Flow",
+        navServices: "Servicios",
+        navPricing: "Precios",
+        navFAQ: "FAQ",
+        navReviews: "Reseñas",
+        navContact: "Contacto",
+        heroEyebrow: "Estudio digital",
+        heroTitle: "Diseñamos sitios web modernos que ayudan a crecer a tu negocio",
+        heroText: "Elevate Studio Flow ofrece diseño web, desarrollo y branding para negocios modernos.",
+        heroCTA: "Comenzar prueba gratis",
+        servicesTitle: "Servicios",
+        serviceDesignTitle: "Diseño web",
+        serviceDesignText: "Diseños limpios y modernos que convierten visitantes en clientes.",
+        serviceDevTitle: "Desarrollo",
+        serviceDevText: "Sitios rápidos y responsivos que funcionan en todos los dispositivos.",
+        serviceBrandTitle: "Branding",
+        serviceBrandText: "Logotipos, colores y visuales que hacen destacar tu negocio.",
+        pricingTitle: "Precios",
+        pricingNote: "Paga al año y ahorra 30 % frente al pago mensual.",
+        billingMonthly: "Mensual",
+        billingYearly: "Anual -30 %",
+        billedMonthly: "Facturado mensualmente",
+        billedYearly: "Facturado anualmente",
+        monthUnit: "mes",
+        yearUnit: "año",
+        yearlyPerMonth: "mes facturado anualmente",
+        planBasic: "Básico",
+        planStandard: "Estándar",
+        planPremium: "Premium",
+        mostPopular: "Más popular",
+        bestValue: "Mejor valor",
+        basicPerk1: "1 concepto de sitio web",
+        basicPerk2: "Diseño responsive básico",
+        basicPerk3: "Configuración esencial de branding",
+        basicPerk4: "Soporte por e-mail",
+        standardPerk1: "Hasta 5 páginas",
+        standardPerk2: "Diseño moderno personalizado",
+        standardPerk3: "Branding incluido",
+        standardPerk4: "Soporte prioritario",
+        standardPerk5: "Una ronda de revisiones",
+        premiumPerk1: "Sitio premium completo",
+        premiumPerk2: "Sistema de branding avanzado",
+        premiumPerk3: "Páginas y secciones extra",
+        premiumPerk4: "Entrega más rápida",
+        premiumPerk5: "Más rondas de revisión",
+        premiumPerk6: "Soporte de lanzamiento",
+        faqTitle: "FAQ",
+        faqQ1: "¿Cuánto tarda?",
+        faqA1: "Normalmente 1–2 semanas.",
+        faqQ2: "¿Puedo cancelar?",
+        faqA2: "Sí, en cualquier momento.",
+        faqQ3: "¿Ofrecen soporte?",
+        faqA3: "Sí, según tu plan.",
+        reviewsTitle: "Lo que dicen los clientes",
+        review1: "\"¡Gran servicio!\" – Alex",
+        review2: "\"¡Diseño increíble!\" – Sarah",
+        contactTitle: "Contacto",
+        contactText: "Si tienes un proyecto en mente, contáctanos directamente por e-mail o Instagram.",
+        emailButton: "Enviar e-mail",
+        instagramButton: "Mensaje en Instagram",
+        summaryPlan: "Plan",
+        summaryBilling: "Facturación",
+        modalMonthlyText: "Elige tu método de pago y continúa con la facturación mensual.",
+        modalYearlyText: "Elige tu método de pago y continúa. La facturación anual ahorra 30 %.",
+        paymentCardTab: "Tarjeta de crédito / débito",
+        paymentPaypalTab: "PayPal",
+        paymentAppleTab: "Apple Pay",
+        paymentGoogleTab: "Google Pay",
+        paypalHelp: "Usa el correo vinculado a tu cuenta de PayPal.",
+        continueButton: "Continuar suscripción",
+        phCardNumber: "Número de tarjeta",
+        phCardExpiry: "MM/AA",
+        phCardCvc: "Código de seguridad",
+        phCardHolder: "Titular de la tarjeta",
+        phCountry: "País / región",
+        phPaypalEmail: "Correo de PayPal",
+        phFullName: "Nombre completo",
+        phAppleAccount: "Correo o teléfono del Apple ID",
+        phGoogleAccount: "Correo o teléfono de Google",
+        missingCardNumber: "Escribe un número de tarjeta válido.",
+        missingExpiry: "Escribe una fecha de vencimiento válida (MM/AA).",
+        missingCvc: "Escribe un código de seguridad válido.",
+        missingCardHolder: "Escribe el nombre del titular.",
+        missingCountry: "Escribe el país / región.",
+        missingPaypalEmail: "Escribe un correo de PayPal válido.",
+        missingWallet: "Completa todos los datos de la cuenta.",
+        readyMonthly: "Listo para continuar con {plan} en facturación mensual.",
+        readyYearly: "Listo para continuar con {plan} en facturación anual. La facturación anual ahorra 30 %."
+      },
+
+      it: {
+        brandName: "Elevate Studio Flow",
+        navServices: "Servizi",
+        navPricing: "Prezzi",
+        navFAQ: "FAQ",
+        navReviews: "Recensioni",
+        navContact: "Contatto",
+        heroEyebrow: "Studio digitale",
+        heroTitle: "Progettiamo siti web moderni che aiutano la tua attività a crescere",
+        heroText: "Elevate Studio Flow offre web design, sviluppo e branding per aziende moderne.",
+        heroCTA: "Inizia la prova gratuita",
+        servicesTitle: "Servizi",
+        serviceDesignTitle: "Web design",
+        serviceDesignText: "Layout puliti e moderni che convertono i visitatori in clienti.",
+        serviceDevTitle: "Sviluppo",
+        serviceDevText: "Siti veloci e responsive che funzionano su ogni dispositivo.",
+        serviceBrandTitle: "Branding",
+        serviceBrandText: "Loghi, colori e visual che fanno risaltare la tua attività.",
+        pricingTitle: "Prezzi",
+        pricingNote: "Paga annualmente e risparmia il 30 % rispetto alla fatturazione mensile.",
+        billingMonthly: "Mensile",
+        billingYearly: "Annuale -30 %",
+        billedMonthly: "Fatturato mensilmente",
+        billedYearly: "Fatturato annualmente",
+        monthUnit: "mese",
+        yearUnit: "anno",
+        yearlyPerMonth: "mese fatturato annualmente",
+        planBasic: "Base",
+        planStandard: "Standard",
+        planPremium: "Premium",
+        mostPopular: "Più popolare",
+        bestValue: "Miglior valore",
+        basicPerk1: "1 concept di sito",
+        basicPerk2: "Design responsive base",
+        basicPerk3: "Setup branding essenziale",
+        basicPerk4: "Supporto e-mail",
+        standardPerk1: "Fino a 5 pagine",
+        standardPerk2: "Layout moderno personalizzato",
+        standardPerk3: "Branding incluso",
+        standardPerk4: "Supporto prioritario",
+        standardPerk5: "Un round di revisioni",
+        premiumPerk1: "Sito premium completo",
+        premiumPerk2: "Sistema branding avanzato",
+        premiumPerk3: "Pagine e sezioni extra",
+        premiumPerk4: "Consegna più rapida",
+        premiumPerk5: "Più round di revisioni",
+        premiumPerk6: "Supporto al lancio",
+        faqTitle: "FAQ",
+        faqQ1: "Quanto tempo ci vuole?",
+        faqA1: "Di solito 1–2 settimane.",
+        faqQ2: "Posso cancellare?",
+        faqA2: "Sì, in qualsiasi momento.",
+        faqQ3: "Offrite supporto?",
+        faqA3: "Sì, in base al piano.",
+        reviewsTitle: "Cosa dicono i clienti",
+        review1: "\"Ottimo servizio!\" – Alex",
+        review2: "\"Design fantastico!\" – Sarah",
+        contactTitle: "Contatto",
+        contactText: "Se hai un progetto in mente, contattaci direttamente via e-mail o Instagram.",
+        emailButton: "Invia e-mail",
+        instagramButton: "Messaggio su Instagram",
+        summaryPlan: "Piano",
+        summaryBilling: "Fatturazione",
+        modalMonthlyText: "Scegli il metodo di pagamento e continua con la fatturazione mensile.",
+        modalYearlyText: "Scegli il metodo di pagamento e continua. La fatturazione annuale fa risparmiare il 30 %.",
+        paymentCardTab: "Carta di credito / debito",
+        paymentPaypalTab: "PayPal",
+        paymentAppleTab: "Apple Pay",
+        paymentGoogleTab: "Google Pay",
+        paypalHelp: "Usa l’email collegata all’account PayPal.",
+        continueButton: "Continua l’abbonamento",
+        phCardNumber: "Numero carta",
+        phCardExpiry: "MM/AA",
+        phCardCvc: "Codice di sicurezza",
+        phCardHolder: "Intestatario della carta",
+        phCountry: "Paese / regione",
+        phPaypalEmail: "Email PayPal",
+        phFullName: "Nome completo",
+        phAppleAccount: "Email o telefono Apple ID",
+        phGoogleAccount: "Email o telefono account Google",
+        missingCardNumber: "Inserisci un numero di carta valido.",
+        missingExpiry: "Inserisci una data di scadenza valida (MM/AA).",
+        missingCvc: "Inserisci un codice di sicurezza valido.",
+        missingCardHolder: "Inserisci il nome dell’intestatario.",
+        missingCountry: "Inserisci paese / regione.",
+        missingPaypalEmail: "Inserisci un’email PayPal valida.",
+        missingWallet: "Completa tutti i dati dell’account.",
+        readyMonthly: "Pronto a continuare con {plan} in fatturazione mensile.",
+        readyYearly: "Pronto a continuare con {plan} in fatturazione annuale. La fatturazione annuale fa risparmiare il 30 %."
+      },
+
+      pt: {
+        brandName: "Elevate Studio Flow",
+        navServices: "Serviços",
+        navPricing: "Preços",
+        navFAQ: "FAQ",
+        navReviews: "Avaliações",
+        navContact: "Contacto",
+        heroEyebrow: "Estúdio digital",
+        heroTitle: "Criamos websites modernos que ajudam o teu negócio a crescer",
+        heroText: "A Elevate Studio Flow oferece web design, desenvolvimento e branding para negócios modernos.",
+        heroCTA: "Iniciar teste gratuito",
+        servicesTitle: "Serviços",
+        serviceDesignTitle: "Web design",
+        serviceDesignText: "Layouts limpos e modernos que convertem visitantes em clientes.",
+        serviceDevTitle: "Desenvolvimento",
+        serviceDevText: "Websites rápidos e responsivos que funcionam em qualquer dispositivo.",
+        serviceBrandTitle: "Branding",
+        serviceBrandText: "Logótipos, cores e visuais que destacam o teu negócio.",
+        pricingTitle: "Preços",
+        pricingNote: "Paga anualmente e poupa 30 % em comparação com a cobrança mensal.",
+        billingMonthly: "Mensal",
+        billingYearly: "Anual -30 %",
+        billedMonthly: "Cobrado mensalmente",
+        billedYearly: "Cobrado anualmente",
+        monthUnit: "mês",
+        yearUnit: "ano",
+        yearlyPerMonth: "mês cobrado anualmente",
+        planBasic: "Básico",
+        planStandard: "Standard",
+        planPremium: "Premium",
+        mostPopular: "Mais popular",
+        bestValue: "Melhor valor",
+        basicPerk1: "1 conceito de website",
+        basicPerk2: "Design responsivo básico",
+        basicPerk3: "Configuração essencial de branding",
+        basicPerk4: "Suporte por e-mail",
+        standardPerk1: "Até 5 páginas",
+        standardPerk2: "Layout moderno personalizado",
+        standardPerk3: "Branding incluído",
+        standardPerk4: "Suporte prioritário",
+        standardPerk5: "Uma ronda de revisões",
+        premiumPerk1: "Website premium completo",
+        premiumPerk2: "Sistema de branding avançado",
+        premiumPerk3: "Páginas e secções extra",
+        premiumPerk4: "Entrega mais rápida",
+        premiumPerk5: "Mais rondas de revisão",
+        premiumPerk6: "Suporte de lançamento",
+        faqTitle: "FAQ",
+        faqQ1: "Quanto tempo demora?",
+        faqA1: "Normalmente 1–2 semanas.",
+        faqQ2: "Posso cancelar?",
+        faqA2: "Sim, a qualquer momento.",
+        faqQ3: "Oferecem suporte?",
+        faqA3: "Sim, depende do plano.",
+        reviewsTitle: "O que os clientes dizem",
+        review1: "\"Excelente serviço!\" – Alex",
+        review2: "\"Design incrível!\" – Sarah",
+        contactTitle: "Contacto",
+        contactText: "Se tens um projeto em mente, contacta-nos diretamente por e-mail ou Instagram.",
+        emailButton: "Enviar e-mail",
+        instagramButton: "Mensagem no Instagram",
+        summaryPlan: "Plano",
+        summaryBilling: "Cobrança",
+        modalMonthlyText: "Escolhe o método de pagamento e continua com cobrança mensal.",
+        modalYearlyText: "Escolhe o método de pagamento e continua. A cobrança anual poupa 30 %.",
+        paymentCardTab: "Cartão de crédito / débito",
+        paymentPaypalTab: "PayPal",
+        paymentAppleTab: "Apple Pay",
+        paymentGoogleTab: "Google Pay",
+        paypalHelp: "Usa o e-mail associado à conta PayPal.",
+        continueButton: "Continuar subscrição",
+        phCardNumber: "Número do cartão",
+        phCardExpiry: "MM/AA",
+        phCardCvc: "Código de segurança",
+        phCardHolder: "Titular do cartão",
+        phCountry: "País / região",
+        phPaypalEmail: "Email PayPal",
+        phFullName: "Nome completo",
+        phAppleAccount: "Email ou telefone do Apple ID",
+        phGoogleAccount: "Email ou telefone da conta Google",
+        missingCardNumber: "Introduz um número de cartão válido.",
+        missingExpiry: "Introduz uma data de validade válida (MM/AA).",
+        missingCvc: "Introduz um código de segurança válido.",
+        missingCardHolder: "Introduz o nome do titular.",
+        missingCountry: "Introduz o país / região.",
+        missingPaypalEmail: "Introduz um email do PayPal válido.",
+        missingWallet: "Completa todos os dados da conta.",
+        readyMonthly: "Pronto para continuar com {plan} na cobrança mensal.",
+        readyYearly: "Pronto para continuar com {plan} na cobrança anual. A cobrança anual poupa 30 %."
+      },
+
+      nl: {
+        brandName: "Elevate Studio Flow",
+        navServices: "Diensten",
+        navPricing: "Prijzen",
+        navFAQ: "FAQ",
+        navReviews: "Beoordelingen",
+        navContact: "Contact",
+        heroEyebrow: "Digitale studio",
+        heroTitle: "Wij ontwerpen moderne websites die je bedrijf laten groeien",
+        heroText: "Elevate Studio Flow biedt webdesign, ontwikkeling en branding voor moderne bedrijven.",
+        heroCTA: "Gratis proef starten",
+        servicesTitle: "Diensten",
+        serviceDesignTitle: "Webdesign",
+        serviceDesignText: "Schone, moderne layouts die bezoekers omzetten in klanten.",
+        serviceDevTitle: "Ontwikkeling",
+        serviceDevText: "Snelle, responsieve websites die op elk apparaat werken.",
+        serviceBrandTitle: "Branding",
+        serviceBrandText: "Logo’s, kleuren en visuals die je bedrijf laten opvallen.",
+        pricingTitle: "Prijzen",
+        pricingNote: "Betaal jaarlijks en bespaar 30 % ten opzichte van maandelijkse facturatie.",
+        billingMonthly: "Maandelijks",
+        billingYearly: "Jaarlijks -30 %",
+        billedMonthly: "Maandelijks gefactureerd",
+        billedYearly: "Jaarlijks gefactureerd",
+        monthUnit: "maand",
+        yearUnit: "jaar",
+        yearlyPerMonth: "maand gefactureerd jaarlijks",
+        planBasic: "Basis",
+        planStandard: "Standaard",
+        planPremium: "Premium",
+        mostPopular: "Meest populair",
+        bestValue: "Beste waarde",
+        basicPerk1: "1 websiteconcept",
+        basicPerk2: "Basis responsief ontwerp",
+        basicPerk3: "Essentiële branding-opzet",
+        basicPerk4: "E-mailondersteuning",
+        standardPerk1: "Tot 5 pagina’s",
+        standardPerk2: "Aangepaste moderne lay-out",
+        standardPerk3: "Branding-styling inbegrepen",
+        standardPerk4: "Prioritaire ondersteuning",
+        standardPerk5: "Eén revisieronde",
+        premiumPerk1: "Volledige premium website",
+        premiumPerk2: "Geavanceerd brandingsysteem",
+        premiumPerk3: "Extra pagina’s en secties",
+        premiumPerk4: "Snellere oplevering",
+        premiumPerk5: "Meer revisierondes",
+        premiumPerk6: "Lanceringondersteuning",
+        faqTitle: "FAQ",
+        faqQ1: "Hoe lang duurt het?",
+        faqA1: "Meestal 1–2 weken.",
+        faqQ2: "Kan ik annuleren?",
+        faqA2: "Ja, op elk moment.",
+        faqQ3: "Bieden jullie ondersteuning?",
+        faqA3: "Ja, afhankelijk van je plan.",
+        reviewsTitle: "Wat klanten zeggen",
+        review1: "\"Geweldige service!\" – Alex",
+        review2: "\"Fantastisch ontwerp!\" – Sarah",
+        contactTitle: "Contact",
+        contactText: "Heb je een project in gedachten, neem dan direct contact op via e-mail of Instagram.",
+        emailButton: "Mail ons",
+        instagramButton: "Bericht op Instagram",
+        summaryPlan: "Plan",
+        summaryBilling: "Facturatie",
+        modalMonthlyText: "Kies je betaalmethode en ga verder met maandelijkse facturatie.",
+        modalYearlyText: "Kies je betaalmethode en ga verder. Jaarlijkse facturatie bespaart 30 %.",
+        paymentCardTab: "Creditcard / betaalpas",
+        paymentPaypalTab: "PayPal",
+        paymentAppleTab: "Apple Pay",
+        paymentGoogleTab: "Google Pay",
+        paypalHelp: "Gebruik het e-mailadres dat aan een PayPal-account is gekoppeld.",
+        continueButton: "Abonnement voortzetten",
+        phCardNumber: "Kaartnummer",
+        phCardExpiry: "MM/JJ",
+        phCardCvc: "Beveiligingscode",
+        phCardHolder: "Naam kaarthouder",
+        phCountry: "Land / regio",
+        phPaypalEmail: "PayPal-e-mailadres",
+        phFullName: "Volledige naam",
+        phAppleAccount: "Apple ID e-mail of telefoon",
+        phGoogleAccount: "Google-account e-mail of telefoon",
+        missingCardNumber: "Voer een geldig kaartnummer in.",
+        missingExpiry: "Voer een geldige vervaldatum in (MM/JJ).",
+        missingCvc: "Voer een geldige beveiligingscode in.",
+        missingCardHolder: "Voer de naam van de kaarthouder in.",
+        missingCountry: "Voer land / regio in.",
+        missingPaypalEmail: "Voer een geldig PayPal-e-mailadres in.",
+        missingWallet: "Vul alle accountgegevens in.",
+        readyMonthly: "Klaar om door te gaan met {plan} op maandelijkse facturatie.",
+        readyYearly: "Klaar om door te gaan met {plan} op jaarlijkse facturatie. Jaarlijkse facturatie bespaart 30 %."
+      },
+
+      pl: {
+        brandName: "Elevate Studio Flow",
+        navServices: "Usługi",
+        navPricing: "Cennik",
+        navFAQ: "FAQ",
+        navReviews: "Opinie",
+        navContact: "Kontakt",
+        heroEyebrow: "Studio cyfrowe",
+        heroTitle: "Projektujemy nowoczesne strony, które pomagają rozwijać Twój biznes",
+        heroText: "Elevate Studio Flow oferuje projektowanie stron, rozwój i branding dla nowoczesnych firm.",
+        heroCTA: "Rozpocznij bezpłatny okres próbny",
+        servicesTitle: "Usługi",
+        serviceDesignTitle: "Projektowanie stron",
+        serviceDesignText: "Czyste, nowoczesne układy, które zamieniają odwiedzających w klientów.",
+        serviceDevTitle: "Programowanie",
+        serviceDevText: "Szybkie, responsywne strony działające na każdym urządzeniu.",
+        serviceBrandTitle: "Branding",
+        serviceBrandText: "Logotypy, kolory i wizualizacje, które wyróżniają Twoją firmę.",
+        pricingTitle: "Cennik",
+        pricingNote: "Płać rocznie i oszczędzaj 30 % w porównaniu z rozliczeniem miesięcznym.",
+        billingMonthly: "Miesięcznie",
+        billingYearly: "Rocznie -30 %",
+        billedMonthly: "Rozliczane miesięcznie",
+        billedYearly: "Rozliczane rocznie",
+        monthUnit: "miesiąc",
+        yearUnit: "rok",
+        yearlyPerMonth: "mies. przy rozliczeniu rocznym",
+        planBasic: "Podstawowy",
+        planStandard: "Standard",
+        planPremium: "Premium",
+        mostPopular: "Najpopularniejszy",
+        bestValue: "Najlepsza wartość",
+        basicPerk1: "1 koncepcja strony",
+        basicPerk2: "Podstawowy responsywny дизайн",
+        basicPerk3: "Podstawowa konfiguracja marki",
+        basicPerk4: "Wsparcie e-mail",
+        standardPerk1: "Do 5 stron",
+        standardPerk2: "Indywidualny nowoczesny układ",
+        standardPerk3: "Branding w cenie",
+        standardPerk4: "Priorytetowe wsparcie",
+        standardPerk5: "Jedna runda poprawek",
+        premiumPerk1: "Pełna strona premium",
+        premiumPerk2: "Zaawansowany system marki",
+        premiumPerk3: "Dodatkowe strony i sekcje",
+        premiumPerk4: "Szybsza realizacja",
+        premiumPerk5: "Więcej rund poprawek",
+        premiumPerk6: "Wsparcie przy starcie",
+        faqTitle: "FAQ",
+        faqQ1: "Jak długo to trwa?",
+        faqA1: "Zwykle 1–2 tygodnie.",
+        faqQ2: "Czy mogę anulować?",
+        faqA2: "Tak, w dowolnym momencie.",
+        faqQ3: "Czy oferujecie wsparcie?",
+        faqA3: "Tak, w zależności od planu.",
+        reviewsTitle: "Co mówią klienci",
+        review1: "\"Świetna obsługa!\" – Alex",
+        review2: "\"Niesamowity дизайн!\" – Sarah",
+        contactTitle: "Kontakt",
+        contactText: "Jeśli masz pomysł na projekt, skontaktuj się bezpośrednio przez e-mail lub Instagram.",
+        emailButton: "Napisz e-mail",
+        instagramButton: "Wiadomość na Instagramie",
+        summaryPlan: "Plan",
+        summaryBilling: "Rozliczenie",
+        modalMonthlyText: "Wybierz metodę płatności i kontynuuj z rozliczeniem miesięcznym.",
+        modalYearlyText: "Wybierz metodę płatności i kontynuuj. Roczne rozliczenie oszczędza 30 %.",
+        paymentCardTab: "Karta kredytowa / debetowa",
+        paymentPaypalTab: "PayPal",
+        paymentAppleTab: "Apple Pay",
+        paymentGoogleTab: "Google Pay",
+        paypalHelp: "Użyj adresu e-mail powiązanego z kontem PayPal.",
+        continueButton: "Kontynuuj subskrypcję",
+        phCardNumber: "Numer karty",
+        phCardExpiry: "MM/RR",
+        phCardCvc: "Kod bezpieczeństwa",
+        phCardHolder: "Imię i nazwisko posiadacza karty",
+        phCountry: "Kraj / region",
+        phPaypalEmail: "Adres e-mail PayPal",
+        phFullName: "Imię i nazwisko",
+        phAppleAccount: "E-mail lub telefon Apple ID",
+        phGoogleAccount: "E-mail lub telefon konta Google",
+        missingCardNumber: "Wprowadź prawidłowy numer karty.",
+        missingExpiry: "Wprowadź prawidłową datę ważności (MM/RR).",
+        missingCvc: "Wprowadź prawidłowy kod bezpieczeństwa.",
+        missingCardHolder: "Wprowadź imię i nazwisko posiadacza karty.",
+        missingCountry: "Wprowadź kraj / region.",
+        missingPaypalEmail: "Wprowadź prawidłowy adres e-mail PayPal.",
+        missingWallet: "Uzupełnij wszystkie dane konta.",
+        readyMonthly: "Gotowe do kontynuacji z {plan} przy rozliczeniu miesięcznym.",
+        readyYearly: "Gotowe do kontynuacji z {plan} przy rozliczeniu rocznym. Roczne rozliczenie oszczędza 30 %."
+      }
+
+      /* If you want, I’ll continue the remaining language packs in the same format:
+         sv, da, no, fi, cs, sk, hu, ro, bg, el, tr, ar, he, ru, uk, ja, ko, zh, zh-TW, hi, bn, th, vi, id.
+         The page structure below already supports them. */
+    };
+
+    function getText(key) {
+      const pack = texts[currentLang] || texts.en;
+      return pack[key] || texts.en[key] || "";
+    }
+
+    function applyLanguage(lang) {
+      currentLang = texts[lang] ? lang : "en";
+      document.documentElement.lang = currentLang;
+      document.documentElement.dir = rtlLanguages.has(currentLang) ? "rtl" : "ltr";
+
+      document.getElementById("brandName").textContent = getText("brandName");
+      document.getElementById("navServices").textContent = getText("navServices");
+      document.getElementById("navPricing").textContent = getText("navPricing");
+      document.getElementById("navFAQ").textContent = getText("navFAQ");
+      document.getElementById("navReviews").textContent = getText("navReviews");
+      document.getElementById("navContact").textContent = getText("navContact");
+
+      document.getElementById("heroEyebrow").textContent = getText("heroEyebrow");
+      document.getElementById("heroTitle").textContent = getText("heroTitle");
+      document.getElementById("heroText").textContent = getText("heroText");
+      document.getElementById("heroCTA").textContent = getText("heroCTA");
+
+      document.getElementById("servicesTitle").textContent = getText("servicesTitle");
+      document.getElementById("serviceDesignTitle").textContent = getText("serviceDesignTitle");
+      document.getElementById("serviceDesignText").textContent = getText("serviceDesignText");
+      document.getElementById("serviceDevTitle").textContent = getText("serviceDevTitle");
+      document.getElementById("serviceDevText").textContent = getText("serviceDevText");
+      document.getElementById("serviceBrandTitle").textContent = getText("serviceBrandTitle");
+      document.getElementById("serviceBrandText").textContent = getText("serviceBrandText");
+
+      document.getElementById("pricingTitle").textContent = getText("pricingTitle");
+      document.getElementById("pricingNote").textContent = getText("pricingNote");
+      document.getElementById("billingMonthly").textContent = getText("billingMonthly");
+      document.getElementById("billingYearly").textContent = getText("billingYearly");
+      document.getElementById("planBasic").textContent = getText("planBasic");
+      document.getElementById("planStandard").textContent = getText("planStandard");
+      document.getElementById("planPremium").textContent = getText("planPremium");
+      document.getElementById("mostPopular").textContent = getText("mostPopular");
+      document.getElementById("bestValue").textContent = getText("bestValue");
+
+      document.getElementById("basicPerk1").textContent = getText("basicPerk1");
+      document.getElementById("basicPerk2").textContent = getText("basicPerk2");
+      document.getElementById("basicPerk3").textContent = getText("basicPerk3");
+      document.getElementById("basicPerk4").textContent = getText("basicPerk4");
+      document.getElementById("standardPerk1").textContent = getText("standardPerk1");
+      document.getElementById("standardPerk2").textContent = getText("standardPerk2");
+      document.getElementById("standardPerk3").textContent = getText("standardPerk3");
+      document.getElementById("standardPerk4").textContent = getText("standardPerk4");
+      document.getElementById("standardPerk5").textContent = getText("standardPerk5");
+      document.getElementById("premiumPerk1").textContent = getText("premiumPerk1");
+      document.getElementById("premiumPerk2").textContent = getText("premiumPerk2");
+      document.getElementById("premiumPerk3").textContent = getText("premiumPerk3");
+      document.getElementById("premiumPerk4").textContent = getText("premiumPerk4");
+      document.getElementById("premiumPerk5").textContent = getText("premiumPerk5");
+      document.getElementById("premiumPerk6").textContent = getText("premiumPerk6");
+
+      document.getElementById("faqTitle").textContent = getText("faqTitle");
+      document.getElementById("faqQ1").textContent = getText("faqQ1");
+      document.getElementById("faqA1").textContent = getText("faqA1");
+      document.getElementById("faqQ2").textContent = getText("faqQ2");
+      document.getElementById("faqA2").textContent = getText("faqA2");
+      document.getElementById("faqQ3").textContent = getText("faqQ3");
+      document.getElementById("faqA3").textContent = getText("faqA3");
+
+      document.getElementById("reviewsTitle").textContent = getText("reviewsTitle");
+      document.getElementById("review1").textContent = getText("review1");
+      document.getElementById("review2").textContent = getText("review2");
+
+      document.getElementById("contactTitle").textContent = getText("contactTitle");
+      document.getElementById("contactText").textContent = getText("contactText");
+      document.getElementById("emailButton").textContent = getText("emailButton");
+      document.getElementById("instagramButton").textContent = getText("instagramButton");
+
+      document.getElementById("summaryPlan").textContent = getText("summaryPlan");
+      document.getElementById("summaryBilling").textContent = getText("summaryBilling");
+      document.getElementById("paymentCardTab").textContent = getText("paymentCardTab");
+      document.getElementById("paymentPaypalTab").textContent = getText("paymentPaypalTab");
+      document.getElementById("paymentAppleTab").textContent = getText("paymentAppleTab");
+      document.getElementById("paymentGoogleTab").textContent = getText("paymentGoogleTab");
+      document.getElementById("continueButton").textContent = getText("continueButton");
+      document.getElementById("paypalHelp").textContent = getText("paypalHelp");
+
+      setPlaceholders();
+      updateBillingButtons();
+      updatePricing();
+      updateModalCopy();
+      updatePlanButtons();
+      updateLanguageOptionLabels();
+    }
+
+    function setPlaceholders() {
+      const map = [
+        ["cardNumber", "phCardNumber"],
+        ["cardExpiry", "phCardExpiry"],
+        ["cardCvc", "phCardCvc"],
+        ["cardHolder", "phCardHolder"],
+        ["cardCountry", "phCountry"],
+        ["paypalEmail", "phPaypalEmail"],
+        ["appleName", "phFullName"],
+        ["appleAccount", "phAppleAccount"],
+        ["appleCountry", "phCountry"],
+        ["googleName", "phFullName"],
+        ["googleAccount", "phGoogleAccount"],
+        ["googleCountry", "phCountry"]
+      ];
+      map.forEach(([id, key]) => {
+        const el = document.getElementById(id);
+        if (el) el.placeholder = getText(key);
+      });
+    }
+
+    function updateLanguageOptionLabels() {
+      const labels = {
+        en: "English",
+        de: "Deutsch",
+        fr: "Français",
+        es: "Español",
+        it: "Italiano",
+        pt: "Português",
+        nl: "Nederlands",
+        pl: "Polski",
+        sv: "Svenska",
+        da: "Dansk",
+        no: "Norsk",
+        fi: "Suomi",
+        cs: "Čeština",
+        sk: "Slovenčina",
+        hu: "Magyar",
+        ro: "Română",
+        bg: "Български",
+        el: "Ελληνικά",
+        tr: "Türkçe",
+        ar: "العربية",
+        he: "עברית",
+        ru: "Русский",
+        uk: "Українська",
+        ja: "日本語",
+        ko: "한국어",
+        zh: "中文",
+        "zh-TW": "繁體中文",
+        hi: "हिन्दी",
+        bn: "বাংলা",
+        th: "ไทย",
+        vi: "Tiếng Việt",
+        id: "Bahasa Indonesia"
+      };
+      document.querySelectorAll("#languageSelect option").forEach((o) => {
+        o.textContent = labels[o.value] || o.textContent;
+      });
+    }
+
+    function formatEuro(value) {
+      return new Intl.NumberFormat(currentLang, {
+        style: "currency",
+        currency: "EUR",
+        maximumFractionDigits: Number.isInteger(value) ? 0 : 2
+      }).format(value).replace(/\u00a0/g, " ");
+    }
+
+    function updateBillingButtons() {
+      document.querySelectorAll(".billing-btn").forEach((btn) => {
+        btn.classList.toggle("active", btn.dataset.billing === billingMode);
+      });
+    }
+
+    function updatePricing() {
+      const monthUnit = getText("monthUnit");
+      const yearUnit = getText("yearUnit");
+      const yearlyPerMonth = getText("yearlyPerMonth");
+
+      document.querySelectorAll(".plan-card").forEach((card) => {
+        const monthly = Number(card.dataset.monthly);
+        const priceMain = card.querySelector(".price-main");
+        const priceOld = card.querySelector(".price-old");
+        const priceSub = card.querySelector(".price-sub");
+
+        if (billingMode === "monthly") {
+          priceMain.textContent = `${formatEuro(monthly)} / ${monthUnit}`;
+          priceOld.textContent = "";
+          priceOld.style.display = "none";
+          priceSub.textContent = getText("billedMonthly");
+        } else {
+          const originalYearly = monthly * 12;
+          const discountedYearly = Math.round(originalYearly * 0.7);
+          const monthlyEquivalent = discountedYearly / 12;
+
+          priceMain.textContent = `${formatEuro(discountedYearly)} / ${yearUnit}`;
+          priceOld.textContent = formatEuro(originalYearly);
+          priceOld.style.display = "inline";
+          priceSub.textContent = `${formatEuro(monthlyEquivalent)} / ${yearlyPerMonth}`;
+        }
+      });
+    }
+
+    function toggleTheme() {
+      const isLight = document.body.classList.toggle("light-mode");
+      localStorage.setItem("theme", isLight ? "light" : "dark");
+    }
+
+    function setPaymentMethod(method) {
+      selectedMethod = method;
+      document.querySelectorAll(".method-tab").forEach((tab) => {
+        tab.classList.toggle("active", tab.dataset.method === method);
+      });
+      document.querySelectorAll(".method-panel").forEach((panel) => {
+        panel.classList.toggle("active", panel.dataset.method === method);
+      });
+      const status = document.getElementById("modalStatus");
+      status.textContent = "";
+      status.className = "modal-status";
+    }
+
+    function openModal(plan) {
+      selectedPlan = plan;
+      const modal = document.getElementById("modal");
+      const modalTitle = document.getElementById("modalTitle");
+      const planNameText = document.getElementById("planNameText");
+      const billingTypeText = document.getElementById("billingTypeText");
+      const status = document.getElementById("modalStatus");
+
+      modalTitle.textContent = `${getText("summaryPlan")}: ${getText(`plan${plan}`) || plan}`;
+      planNameText.textContent = getText(`plan${plan}`) || plan;
+      billingTypeText.textContent = billingMode === "yearly" ? getText("billingYearly") : getText("billingMonthly");
+      status.textContent = "";
+
+      modal.classList.add("open");
+      modal.setAttribute("aria-hidden", "false");
+      document.body.style.overflow = "hidden";
+      updateModalCopy();
+    }
+
+    function closeModal() {
+      const modal = document.getElementById("modal");
+      modal.classList.remove("open");
+      modal.setAttribute("aria-hidden", "true");
+      document.body.style.overflow = "";
+    }
+
+    function updateModalCopy() {
+      document.getElementById("modalSubtext").textContent =
+        billingMode === "yearly" ? getText("modalYearlyText") : getText("modalMonthlyText");
+      document.getElementById("continueButton").textContent = getText("continueButton");
+      document.getElementById("billingTypeText").textContent =
+        billingMode === "yearly" ? getText("billingYearly") : getText("billingMonthly");
+    }
+
+    function validateCardNumber(value) {
+      const digits = value.replace(/\D/g, "");
+      return digits.length >= 13 && digits.length <= 19;
+    }
+
+    function validateExpiry(value) {
+      return /^(0[1-9]|1[0-2])\/\d{2}$/.test(value.trim());
+    }
+
+    function validateCvc(value) {
+      const digits = value.replace(/\D/g, "");
+      return digits.length >= 3 && digits.length <= 4;
+    }
+
+    function validateEmail(value) {
+      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value.trim());
+    }
+
+    function updatePlanButtons() {
+      const buttons = [document.getElementById("planCTA1"), document.getElementById("planCTA2"), document.getElementById("planCTA3")];
+      buttons.forEach((btn) => {
+        if (btn) btn.textContent = getText("heroCTA");
+      });
+    }
+
+    function continuePurchase() {
+      const status = document.getElementById("modalStatus");
+
+      if (selectedMethod === "card") {
+        const cardNumber = document.getElementById("cardNumber").value.trim();
+        const cardExpiry = document.getElementById("cardExpiry").value.trim();
+        const cardCvc = document.getElementById("cardCvc").value.trim();
+        const cardHolder = document.getElementById("cardHolder").value.trim();
+        const cardCountry = document.getElementById("cardCountry").value.trim();
+
+        if (!validateCardNumber(cardNumber)) return showError(getText("missingCardNumber"));
+        if (!validateExpiry(cardExpiry)) return showError(getText("missingExpiry"));
+        if (!validateCvc(cardCvc)) return showError(getText("missingCvc"));
+        if (!cardHolder) return showError(getText("missingCardHolder"));
+        if (!cardCountry) return showError(getText("missingCountry"));
+      }
+
+      if (selectedMethod === "paypal") {
+        const paypalEmail = document.getElementById("paypalEmail").value.trim();
+        if (!validateEmail(paypalEmail)) return showError(getText("missingPaypalEmail"));
+      }
+
+      if (selectedMethod === "apple") {
+        const appleName = document.getElementById("appleName").value.trim();
+        const appleAccount = document.getElementById("appleAccount").value.trim();
+        const appleCountry = document.getElementById("appleCountry").value.trim();
+        if (!appleName || !appleAccount || !appleCountry) return showError(getText("missingWallet"));
+      }
+
+      if (selectedMethod === "google") {
+        const googleName = document.getElementById("googleName").value.trim();
+        const googleAccount = document.getElementById("googleAccount").value.trim();
+        const googleCountry = document.getElementById("googleCountry").value.trim();
+        if (!googleName || !googleAccount || !googleCountry) return showError(getText("missingWallet"));
+      }
+
+      const planLabel = getText(`plan${selectedPlan}`) || selectedPlan;
+      const msg = billingMode === "yearly"
+        ? getText("readyYearly").replace("{plan}", planLabel)
+        : getText("readyMonthly").replace("{plan}", planLabel);
+
+      status.textContent = msg;
+      status.className = "modal-status success";
+    }
+
+    function showError(text) {
+      const status = document.getElementById("modalStatus");
+      status.textContent = text;
+      status.className = "modal-status error";
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const savedTheme = localStorage.getItem("theme");
+      if (savedTheme === "light") document.body.classList.add("light-mode");
+
+      const savedLanguage = localStorage.getItem("language") || "en";
+      languageSelect.value = savedLanguage;
+      applyLanguage(savedLanguage);
+
+      languageSelect.addEventListener("change", (e) => {
+        localStorage.setItem("language", e.target.value);
+        applyLanguage(e.target.value);
+      });
+
+      document.querySelectorAll(".billing-btn").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          billingMode = btn.dataset.billing;
+          updateBillingButtons();
+          updatePricing();
+          updateModalCopy();
+        });
+      });
+
+      updatePlanButtons();
+      setPaymentMethod("card");
+    });
+  </script>
+
+</body>
+</html>
